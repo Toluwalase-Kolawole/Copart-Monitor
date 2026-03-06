@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# Logging setup — before any imports that use logging
+# Logging setup
 # ---------------------------------------------------------------------------
 logging.basicConfig(
     level=logging.INFO,
@@ -38,7 +38,7 @@ from state_manager import load_state, save_state, find_new_lots, mark_seen
 # ---------------------------------------------------------------------------
 # Config from environment variables
 # ---------------------------------------------------------------------------
-def get_config() -> dict:
+def get_config():
     required = {
         "TELEGRAM_BOT_TOKEN": os.environ.get("TELEGRAM_BOT_TOKEN"),
         "TELEGRAM_CHAT_ID": os.environ.get("TELEGRAM_CHAT_ID"),
@@ -49,21 +49,30 @@ def get_config() -> dict:
             logger.error("Missing required environment variable: %s", key)
             sys.exit(1)
 
-    # Makes and damage types — comma-separated env vars
     makes_raw = os.environ.get("COPART_MAKES", "")
     damage_raw = os.environ.get("COPART_DAMAGE_TYPES", "")
+    year_min_raw = os.environ.get("COPART_YEAR_MIN", "").strip()
+    year_max_raw = os.environ.get("COPART_YEAR_MAX", "").strip()
 
     makes = [m.strip() for m in makes_raw.split(",") if m.strip()]
     damage_types = [d.strip() for d in damage_raw.split(",") if d.strip()]
 
+    year_min = int(year_min_raw) if year_min_raw.isdigit() else None
+    year_max = int(year_max_raw) if year_max_raw.isdigit() else None
+
     if not makes and not damage_types:
         logger.warning("No COPART_MAKES or COPART_DAMAGE_TYPES set — will fetch ALL listings")
+
+    if year_min or year_max:
+        logger.info("Year filter: %s – %s", year_min or "any", year_max or "any")
 
     return {
         "telegram_token": required["TELEGRAM_BOT_TOKEN"],
         "telegram_chat_id": required["TELEGRAM_CHAT_ID"],
         "makes": makes,
         "damage_types": damage_types,
+        "year_min": year_min,
+        "year_max": year_max,
         "max_pages": int(os.environ.get("COPART_MAX_PAGES", "3")),
         "state_file": Path(os.environ.get("STATE_FILE", "state.json")),
     }
@@ -72,11 +81,14 @@ def get_config() -> dict:
 # ---------------------------------------------------------------------------
 # Scraping with API-first, Playwright fallback
 # ---------------------------------------------------------------------------
-def fetch_lots(makes: list, damage_types: list, max_pages: int) -> list[dict]:
+def fetch_lots(makes, damage_types, year_min, year_max, max_pages):
     """Try API first; fall back to Playwright on failure or empty results."""
-    logger.info("Attempting Copart API... makes=%s damage=%s", makes, damage_types)
+    logger.info(
+        "Attempting Copart API... makes=%s damage=%s years=%s-%s",
+        makes, damage_types, year_min or "*", year_max or "*",
+    )
     try:
-        lots = search_api(makes, damage_types, max_pages=max_pages)
+        lots = search_api(makes, damage_types, year_min=year_min, year_max=year_max, max_pages=max_pages)
         if lots:
             logger.info("✅ API succeeded with %d lots", len(lots))
             return lots
@@ -87,12 +99,36 @@ def fetch_lots(makes: list, damage_types: list, max_pages: int) -> list[dict]:
 
     logger.info("Attempting Playwright scraper...")
     try:
+        # Playwright fetches all results then we filter by year client-side
         lots = search_playwright(makes, damage_types, max_pages=max_pages)
+        # Apply year filter post-fetch
+        if year_min or year_max:
+            before = len(lots)
+            lots = [
+                lot for lot in lots
+                if _year_in_range(lot.get("year"), year_min, year_max)
+            ]
+            logger.info("Year filter %s-%s: %d → %d lots", year_min or "*", year_max or "*", before, len(lots))
         logger.info("✅ Playwright succeeded with %d lots", len(lots))
         return lots
     except Exception as e:
         logger.error("Playwright also failed: %s", e)
         return []
+
+
+def _year_in_range(year, year_min, year_max):
+    """Return True if year is within the specified range."""
+    if year is None:
+        return True  # Don't exclude lots with unknown year
+    try:
+        y = int(year)
+        if year_min and y < year_min:
+            return False
+        if year_max and y > year_max:
+            return False
+        return True
+    except (ValueError, TypeError):
+        return True
 
 
 # ---------------------------------------------------------------------------
@@ -121,11 +157,16 @@ def main():
     state = load_state(config["state_file"])
 
     # --- Fetch lots ---
-    lots = fetch_lots(config["makes"], config["damage_types"], config["max_pages"])
+    lots = fetch_lots(
+        config["makes"],
+        config["damage_types"],
+        config["year_min"],
+        config["year_max"],
+        config["max_pages"],
+    )
 
     if not lots:
         logger.warning("No lots fetched from any source — exiting")
-        # Still save state to update last_run timestamp
         if not args.dry_run:
             save_state(state, config["state_file"])
         sys.exit(0)
@@ -143,7 +184,6 @@ def main():
             for lot in new_lots:
                 logger.info("  • [%s] %s — %s", lot["lot_number"], lot["title"], lot["url"])
         else:
-            # Send Telegram notifications
             send_telegram(
                 token=config["telegram_token"],
                 chat_id=config["telegram_chat_id"],

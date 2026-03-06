@@ -26,7 +26,7 @@ def _build_search_url(makes, damage_types):
     return f"{SEARCH_URL}?{query}" if query else SEARCH_URL
 
 
-def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None):
+def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max_odometer=None):
     """Check if a raw lot matches the requested filters."""
     # Make filter
     if makes:
@@ -52,10 +52,22 @@ def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None):
         except (ValueError, TypeError):
             pass
 
+    # Odometer filter — exclude lots that exceed max miles
+    # Lots with no odometer reading are kept (unknown mileage)
+    if max_odometer is not None:
+        raw_odo = raw.get("orr") or raw.get("od")
+        if raw_odo is not None:
+            try:
+                odo = int(str(raw_odo).replace(",", "").strip())
+                if odo > max_odometer:
+                    return False
+            except (ValueError, TypeError):
+                pass
+
     return True
 
 
-def search_playwright(makes, damage_types, year_min=None, year_max=None, max_pages=3):
+def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
     """
     Open Copart in headless Chromium and intercept the internal
     search API responses — much more reliable than DOM scraping.
@@ -161,11 +173,11 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_pag
     before = len(intercepted)
     filtered = [
         raw for raw in intercepted
-        if _matches_filters(raw, makes, damage_types, year_min, year_max)
+        if _matches_filters(raw, makes, damage_types, year_min, year_max, max_odometer)
     ]
     logger.info(
-        "Client-side filter: %d intercepted → %d matched (makes=%s, damage=%s, years=%s-%s)",
-        before, len(filtered), makes, damage_types, year_min or "*", year_max or "*",
+        "Client-side filter: %d intercepted → %d matched (makes=%s, damage=%s, years=%s-%s, max_odo=%s)",
+        before, len(filtered), makes, damage_types, year_min or "*", year_max or "*", max_odometer or "*",
     )
 
     results = [_parse_lot(raw) for raw in filtered]

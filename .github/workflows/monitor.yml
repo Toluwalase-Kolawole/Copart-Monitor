@@ -56,15 +56,15 @@ jobs:
       # 4. Install Playwright browsers (Chromium only for speed)
       # ------------------------------------------------------------------ #
       - name: Install Playwright Chromium
-  run: |
-    playwright install chromium
-    sudo apt-get update -qq
-    sudo apt-get install -y --no-install-recommends \
-      libnss3 libnspr4 libatk1.0-0t64 libatk-bridge2.0-0t64 \
-      libcups2t64 libdrm2 libxkbcommon0 libxcomposite1 \
-      libxdamage1 libxfixes3 libxrandr2 libgbm1 \
-      libpango-1.0-0 libcairo2 libasound2t64 libx11-6 \
-      libxcb1 libxext6 fonts-liberation
+        run: |
+          playwright install chromium
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            libnss3 libnspr4 libatk1.0-0t64 libatk-bridge2.0-0t64 \
+            libcups2t64 libdrm2 libxkbcommon0 libxcomposite1 \
+            libxdamage1 libxfixes3 libxrandr2 libgbm1 \
+            libpango-1.0-0 libcairo2 libasound2t64 libx11-6 \
+            libxcb1 libxext6 fonts-liberation
 
       # ------------------------------------------------------------------ #
       # 5. Test Telegram (only when manually triggered with test_telegram=true)

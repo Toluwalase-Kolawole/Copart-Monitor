@@ -189,11 +189,18 @@ def main():
             for lot in new_lots:
                 logger.info("  • [%s] %s — %s", lot["lot_number"], lot["title"], lot["url"])
         else:
+            # Cap at 20 notifications per run to avoid spam
+            MAX_NOTIFY = 20
+            notify_lots = new_lots[:MAX_NOTIFY]
             send_telegram(
                 token=config["telegram_token"],
                 chat_id=config["telegram_chat_id"],
-                lots=new_lots,
+                lots=notify_lots,
             )
+            if len(new_lots) > MAX_NOTIFY:
+                remaining = len(new_lots) - MAX_NOTIFY
+                logger.info("Capped notifications at %d — %d more saved to state silently",
+                            MAX_NOTIFY, remaining)
 
     # --- Update & save state ---
     if not args.dry_run:

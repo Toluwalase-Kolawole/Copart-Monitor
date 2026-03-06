@@ -1,6 +1,5 @@
 """
-Copart US API client — uses the correct search-results endpoint
-with Solr-style filter syntax, adapted from Copart UK's working implementation.
+Copart US API client — correct search-results endpoint with working Solr filters.
 """
 
 import httpx
@@ -27,26 +26,27 @@ HEADERS = {
 
 
 def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, rows=100):
-    """Build payload using Solr-style filter syntax (correct Copart format)."""
+    """
+    Build Solr-style filter payload — same format as Copart UK (confirmed working).
+    Uses OR logic within each filter group.
+    """
+    filters = {}
 
-    filters = {
-        "AUCTION_COUNTRY_CODE": ["auction_country_code:US"],
-    }
-
-    # Year range filter
+    # Year range
     y_from = year_min or 1900
     y_to   = year_max or 2100
     filters["YEAR"] = [f"lot_year:[{y_from} TO {y_to}]"]
 
-    # Make filter
+    # Makes — OR between each make
     if makes:
-        make_filters = [f'make:"{m.upper()}"' for m in makes]
-        filters["MAKE"] = make_filters
+        filters["MAKE"] = [f'make:"{m.upper()}"' for m in makes]
 
-    # Damage type filter
+    # Damage types — OR between each damage type
     if damage_types:
-        dmg_filters = [f'damage_description:"{d.upper()}"' for d in damage_types]
-        filters["PRID"] = dmg_filters
+        filters["PRID"] = [f'damage_description:"{d.upper()}"' for d in damage_types]
+
+    # Country
+    filters["AUCTION_COUNTRY_CODE"] = ["auction_country_code:US"]
 
     return {
         "query": ["*"],
@@ -69,59 +69,39 @@ def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, row
 
 
 def parse_lot(raw):
-    """Parse a raw lot using correct Copart field names (from UK implementation)."""
     lot_number = str(raw.get("ln") or raw.get("lotNumberStr") or "")
-
-    # lcy = lot car year (confirmed from UK version)
-    year = raw.get("lcy") or raw.get("y") or raw.get("yr")
-
-    # mkn = make name ✅
-    make = raw.get("mkn") or raw.get("mk")
-
-    # lm = lot model, mdn = model description
-    model = raw.get("lm") or raw.get("mdn") or raw.get("md")
-
-    # dd = damage description ✅
-    damage = raw.get("dd") or raw.get("dmg")
-
-    # orr = odometer reading received ✅
-    odometer = raw.get("orr") or raw.get("od")
-
-    # ld = lot description (full title)
-    title = raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip()
-
+    year   = raw.get("lcy") or raw.get("y")
+    make   = raw.get("mkn") or raw.get("mk")
+    model  = raw.get("lm")  or raw.get("mdn") or raw.get("md")
+    damage = raw.get("dd")  or raw.get("dmg")
     return {
         "lot_number": lot_number,
-        "title": title,
+        "title": raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip(),
         "year": year,
         "make": make,
         "model": model,
         "damage": damage,
-        "odometer": odometer,
+        "odometer": raw.get("orr") or raw.get("od"),
         "sale_date": raw.get("ad"),
         "location": raw.get("yn"),
         "estimate": raw.get("la") or raw.get("lv"),
         "image_url": raw.get("tims"),
-        # ldu = lot detail URL slug (from UK version)
         "url": f"https://www.copart.com/lot/{lot_number}/{raw.get('ldu', '')}".rstrip("/"),
     }
 
 
 def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
-    """Strict client-side filter as safety net."""
     # Make
     if makes:
         lot_make = (lot.get("make") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
             return False
-
     # Damage
     if damage_types:
         lot_damage = (lot.get("damage") or "").upper()
         if not any(d.upper() in lot_damage for d in damage_types):
             return False
-
-    # Year — only filter if year is known
+    # Year (only filter if known)
     year = lot.get("year")
     if year is not None:
         try:
@@ -132,8 +112,7 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                 return False
         except (ValueError, TypeError):
             pass
-
-    # Odometer — only filter if known
+    # Odometer (only filter if known)
     if max_odometer and lot.get("odometer") is not None:
         try:
             odo = int(str(lot["odometer"]).replace(",", "").strip())
@@ -141,18 +120,15 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                 return False
         except (ValueError, TypeError):
             pass
-
     return True
 
 
 def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
-    """Fetch lots using correct Copart search-results endpoint."""
     results = []
 
     with httpx.Client(headers=HEADERS, timeout=30, follow_redirects=True) as client:
-        # Get session cookies from homepage
+        # Get session cookies
         try:
-            logger.info("Fetching Copart homepage for session cookies...")
             home = client.get(HOME_URL)
             logger.info("Homepage: status=%d cookies=%s", home.status_code, list(client.cookies.keys()))
         except Exception as e:
@@ -160,12 +136,14 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
 
         for page in range(max_pages):
             payload = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=page)
+            logger.debug("Payload filters: %s", payload["filter"])
+
             try:
                 resp = client.post(SEARCH_URL, json=payload)
                 logger.info("Search page=%d status=%d", page, resp.status_code)
                 resp.raise_for_status()
             except Exception as e:
-                logger.warning("Search request failed: %s", e)
+                logger.warning("Search failed: %s", e)
                 break
 
             data = resp.json()
@@ -179,32 +157,37 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
                 or data.get("returnObject", {}).get("results", {}).get("totalPages")
                 or 1
             )
+            total_elements = (
+                data.get("data", {}).get("results", {}).get("totalElements")
+                or data.get("returnObject", {}).get("results", {}).get("totalElements")
+                or 0
+            )
 
-            logger.info("Page %d: %d lots (total_pages=%d)", page, len(content), total_pages)
+            logger.info("Page %d: %d lots returned (totalElements=%d, totalPages=%d)",
+                page, len(content), total_elements, total_pages)
 
             if not content:
                 break
 
-            # Log first lot's keys once to help with debugging
+            # Log sample to verify filters are working
             if page == 0 and content:
-                logger.info("FIELD SAMPLE — year=%s make=%s damage=%s odo=%s",
-                    content[0].get("lcy"), content[0].get("mkn"),
-                    content[0].get("dd"), content[0].get("orr"))
+                logger.info("SAMPLE: make=%s damage=%s year=%s odo=%s",
+                    content[0].get("mkn"), content[0].get("dd"),
+                    content[0].get("lcy"), content[0].get("orr"))
 
-            before = len(results)
             for raw in content:
                 lot = parse_lot(raw)
-                passed = _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer)
-                if passed:
+                if _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                     results.append(lot)
                 else:
-                    logger.debug("SKIP %s | make=%s damage=%s year=%s odo=%s",
-                        lot["lot_number"], lot["make"], lot["damage"], lot["year"], lot["odometer"])
+                    logger.debug("SKIP %s | %s | %s | yr=%s | odo=%s",
+                        lot["lot_number"], lot["make"], lot["damage"],
+                        lot["year"], lot["odometer"])
 
-            logger.info("Page %d: %d passed filters (total so far: %d)", page, len(results) - before, len(results))
+            logger.info("After page %d: %d lots pass filters", page, len(results))
 
             if page + 1 >= total_pages:
                 break
 
-    logger.info("API returned %d lots after filtering", len(results))
+    logger.info("API returned %d lots total", len(results))
     return results

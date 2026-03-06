@@ -100,7 +100,7 @@ def fetch_lots(makes, damage_types, year_min, year_max, max_pages):
     logger.info("Attempting Playwright scraper...")
     try:
         # Playwright fetches all results then we filter by year client-side
-        lots = search_playwright(makes, damage_types, max_pages=max_pages)
+        lots = search_playwright(makes, damage_types, year_min=year_min, year_max=year_max, max_pages=max_pages)
         # Apply year filter post-fetch
         if year_min or year_max:
             before = len(lots)

@@ -201,7 +201,11 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
         for raw in content:
             lot = parse_lot(raw)
             before += 1
-            if _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
+            passed = _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer)
+            logger.info("LOT %s | make=%-10s | damage=%-25s | year=%s | odo=%s | pass=%s",
+                lot.get("lot_number",""), lot.get("make",""), lot.get("damage",""),
+                lot.get("year",""), lot.get("odometer",""), passed)
+            if passed:
                 results.append(lot)
 
         # Remaining pages

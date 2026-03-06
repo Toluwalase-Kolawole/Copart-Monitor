@@ -1,5 +1,6 @@
 """
-Copart US API client — correct search-results endpoint with working Solr filters.
+Copart US API client — correct search-results endpoint.
+Payload format reverse-engineered from browser network traffic.
 """
 
 import httpx
@@ -27,30 +28,38 @@ HEADERS = {
 
 def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, rows=100):
     """
-    Build Solr-style filter payload — same format as Copart UK (confirmed working).
-    Uses OR logic within each filter group.
+    Build payload matching exact format from Copart browser network requests.
+    Uses freeFormFilters array (confirmed working format).
     """
-    filters = {}
+    free_form_filters = []
 
-    # Year range
-    y_from = year_min or 1900
-    y_to   = year_max or 2100
-    filters["YEAR"] = [f"lot_year:[{y_from} TO {y_to}]"]
-
-    # Makes — OR between each make
     if makes:
-        filters["MAKE"] = [f'make:"{m.upper()}"' for m in makes]
+        free_form_filters.append({
+            "displayName": "Make",
+            "name": "make",
+            "values": [m.upper() for m in makes],
+        })
 
-    # Damage types — OR between each damage type
     if damage_types:
-        filters["PRID"] = [f'damage_description:"{d.upper()}"' for d in damage_types]
+        free_form_filters.append({
+            "displayName": "Primary Damage",
+            "name": "primaryDamage",
+            "values": [d.upper() for d in damage_types],
+        })
 
-    # Country
-    filters["AUCTION_COUNTRY_CODE"] = ["auction_country_code:US"]
+    year_filters = []
+    if year_min:
+        year_filters.append(f"lot_year:[{year_min} TO *]")
+    if year_max:
+        year_filters.append(f"lot_year:[* TO {year_max}]")
+    if year_min and year_max:
+        year_filters = [f"lot_year:[{year_min} TO {year_max}]"]
 
-    return {
+    payload = {
         "query": ["*"],
-        "filter": filters,
+        "filter": {
+            "AUCTION_COUNTRY_CODE": ["auction_country_code:US"],
+        },
         "sort": ["auction_date_utc asc"],
         "page": page,
         "size": rows,
@@ -65,7 +74,13 @@ def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, row
         "backUrl": "",
         "includeTagByField": {},
         "rawParams": {},
+        "freeFormFilters": free_form_filters,
     }
+
+    if year_filters:
+        payload["filter"]["YEAR"] = year_filters
+
+    return payload
 
 
 def parse_lot(raw):
@@ -91,17 +106,14 @@ def parse_lot(raw):
 
 
 def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
-    # Make
     if makes:
         lot_make = (lot.get("make") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
             return False
-    # Damage
     if damage_types:
         lot_damage = (lot.get("damage") or "").upper()
         if not any(d.upper() in lot_damage for d in damage_types):
             return False
-    # Year (only filter if known)
     year = lot.get("year")
     if year is not None:
         try:
@@ -112,7 +124,6 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                 return False
         except (ValueError, TypeError):
             pass
-    # Odometer (only filter if known)
     if max_odometer and lot.get("odometer") is not None:
         try:
             odo = int(str(lot["odometer"]).replace(",", "").strip())
@@ -127,7 +138,6 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
     results = []
 
     with httpx.Client(headers=HEADERS, timeout=30, follow_redirects=True) as client:
-        # Get session cookies
         try:
             home = client.get(HOME_URL)
             logger.info("Homepage: status=%d cookies=%s", home.status_code, list(client.cookies.keys()))
@@ -136,7 +146,6 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
 
         for page in range(max_pages):
             payload = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=page)
-            logger.debug("Payload filters: %s", payload["filter"])
 
             try:
                 resp = client.post(SEARCH_URL, json=payload)
@@ -163,28 +172,25 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
                 or 0
             )
 
-            logger.info("Page %d: %d lots returned (totalElements=%d, totalPages=%d)",
+            logger.info("Page %d: %d lots (totalElements=%d totalPages=%d)",
                 page, len(content), total_elements, total_pages)
 
             if not content:
                 break
 
-            # Log sample to verify filters are working
             if page == 0 and content:
                 logger.info("SAMPLE: make=%s damage=%s year=%s odo=%s",
                     content[0].get("mkn"), content[0].get("dd"),
                     content[0].get("lcy"), content[0].get("orr"))
 
+            before = len(results)
             for raw in content:
                 lot = parse_lot(raw)
                 if _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                     results.append(lot)
-                else:
-                    logger.debug("SKIP %s | %s | %s | yr=%s | odo=%s",
-                        lot["lot_number"], lot["make"], lot["damage"],
-                        lot["year"], lot["odometer"])
 
-            logger.info("After page %d: %d lots pass filters", page, len(results))
+            logger.info("Page %d: %d passed filters (running total: %d)",
+                page, len(results) - before, len(results))
 
             if page + 1 >= total_pages:
                 break

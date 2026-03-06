@@ -1,78 +1,199 @@
 """
-Copart API client — uses a two-step approach:
-1. First visits copart.com to get session cookies
-2. Then calls the search API with those cookies
+Playwright-based fallback scraper for Copart.
+Uses network response interception to capture Copart's internal
+search API calls — more reliable than DOM scraping.
 """
 
-import httpx
 import logging
+import time
 
 logger = logging.getLogger(__name__)
 
-SEARCH_URL = "https://www.copart.com/public/lots/search/US"
-HOME_URL   = "https://www.copart.com/"
-
-HEADERS = {
-    "Accept": "application/json, text/plain, */*",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Content-Type": "application/json",
-    "Origin": "https://www.copart.com",
-    "Referer": "https://www.copart.com/lotSearchResults/",
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/122.0.0.0 Safari/537.36"
-    ),
-    "sec-ch-ua": '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
-    "sec-ch-ua-mobile": "?0",
-    "sec-ch-ua-platform": '"Windows"',
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-origin",
-}
+SEARCH_URL = "https://www.copart.com/lotSearchResults/"
 
 
-def build_payload(makes, damage_types, year_min=None, year_max=None, max_odometer=None, page=0, rows=100):
-    filter_list = []
-
+def _build_search_url(makes, damage_types):
+    """Build Copart search URL — navigating here triggers the real API calls."""
+    from urllib.parse import quote
+    query_parts = []
     if makes:
-        filter_list.append({
-            "displayName": "Make",
-            "name": "make",
-            "values": [m.upper() for m in makes],
-        })
+        encoded = quote(",".join(m.upper() for m in makes), safe=",")
+        query_parts.append(f"makeList={encoded}")
     if damage_types:
-        filter_list.append({
-            "displayName": "Primary Damage",
-            "name": "primaryDamage",
-            "values": [d.upper() for d in damage_types],
-        })
-
-    payload = {
-        "query": ["*"],
-        "filter": {
-            "SALE_STATUS": ["On Time, Sold"],
-            "AUCTION_COUNTRY_CODE": ["US"],
-        },
-        "sort": {"auction_date_type": "desc"},
-        "page": page,
-        "size": rows,
-        "start": page * rows,
-        "watchListOnly": False,
-        "freeFormFilters": filter_list,
-        "defaultSort": False,
-    }
-
-    if year_min is not None or year_max is not None:
-        payload["filter"]["YEAR"] = {
-            "from": str(year_min) if year_min else "*",
-            "to": str(year_max) if year_max else "*",
-        }
-
-    return payload
+        encoded = quote(",".join(d.upper() for d in damage_types), safe=",")
+        query_parts.append(f"damageList={encoded}")
+    query = "&".join(query_parts)
+    return f"{SEARCH_URL}?{query}" if query else SEARCH_URL
 
 
-def parse_lot(raw):
+def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max_odometer=None):
+    """Check if a raw lot matches the requested filters."""
+    # Make filter
+    if makes:
+        lot_make = (raw.get("mkn") or raw.get("mk") or "").upper()
+        if not any(m.upper() in lot_make for m in makes):
+            return False
+
+    # Damage filter
+    if damage_types:
+        lot_damage = (raw.get("dd") or raw.get("dmg") or "").upper()
+        if not any(d.upper() in lot_damage for d in damage_types):
+            return False
+
+    # Year filter
+    lot_year = raw.get("y")
+    if lot_year:
+        try:
+            y = int(lot_year)
+            if year_min and y < year_min:
+                return False
+            if year_max and y > year_max:
+                return False
+        except (ValueError, TypeError):
+            pass
+
+    # Odometer filter — exclude lots that exceed max miles
+    # Lots with no odometer reading are kept (unknown mileage)
+    if max_odometer is not None:
+        raw_odo = raw.get("orr") or raw.get("od")
+        if raw_odo is not None:
+            try:
+                odo = int(str(raw_odo).replace(",", "").strip())
+                if odo > max_odometer:
+                    return False
+            except (ValueError, TypeError):
+                pass
+
+    return True
+
+
+def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
+    """
+    Open Copart in headless Chromium and intercept the internal
+    search API responses — much more reliable than DOM scraping.
+    """
+    try:
+        from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
+    except ImportError:
+        raise RuntimeError("playwright not installed.")
+
+    url = _build_search_url(makes, damage_types)
+    intercepted = []
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-blink-features=AutomationControlled",
+                "--disable-dev-shm-usage",
+            ],
+        )
+        context = browser.new_context(
+            user_agent=(
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/122.0.0.0 Safari/537.36"
+            ),
+            viewport={"width": 1280, "height": 900},
+            extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+        )
+        context.add_init_script(
+            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+        )
+
+        page = context.new_page()
+
+        # Intercept Copart's internal search API responses
+        def handle_response(response):
+            try:
+                if response.status != 200:
+                    return
+                ct = response.headers.get("content-type", "")
+                if "application/json" not in ct:
+                    return
+                resp_url = response.url
+                if not any(k in resp_url for k in ["search", "lot", "result", "copart.com"]):
+                    return
+                data = response.json()
+                # Try multiple response shapes
+                content = (
+                    data.get("data", {}).get("results", {}).get("content")
+                    or data.get("returnObject", {}).get("results", {}).get("content")
+                    or data.get("results", {}).get("content")
+                    or []
+                )
+                if content:
+                    logger.info("Intercepted %d lots from: %s", len(content), resp_url)
+                    intercepted.extend(content)
+            except Exception as e:
+                logger.debug("Response intercept error: %s", e)
+
+        page.on("response", handle_response)
+
+        logger.info("Playwright: navigating to %s", url)
+        try:
+            page.goto(url, wait_until="networkidle", timeout=45_000)
+        except PWTimeout:
+            logger.warning("networkidle timeout — checking what loaded")
+
+        time.sleep(5)
+
+        try:
+            logger.info("Page title: %s", page.title())
+            logger.info("Page URL after load: %s", page.url)
+            # Save screenshot for debugging
+            page.screenshot(path="/tmp/copart_debug.png")
+            logger.info("Screenshot saved to /tmp/copart_debug.png")
+            # Log first 500 chars of page text to see what loaded
+            body_text = page.inner_text("body")[:500] if page.query_selector("body") else "(no body)"
+            logger.info("Page body preview: %s", body_text.replace(chr(10), " ")[:300])
+        except Exception as ex:
+            logger.info("Debug info error: %s", ex)
+
+        # Paginate if we got results and need more
+        if intercepted and max_pages > 1:
+            for pg in range(1, max_pages):
+                try:
+                    next_btn = page.query_selector(
+                        "button[aria-label='Next page'], "
+                        "a[aria-label='Next page'], "
+                        "li.pagination-next:not(.disabled) a"
+                    )
+                    if not next_btn:
+                        break
+                    next_btn.click()
+                    time.sleep(3)
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=15_000)
+                    except PWTimeout:
+                        pass
+                except Exception as e:
+                    logger.debug("Pagination error: %s", e)
+                    break
+
+        browser.close()
+
+    # Apply strict client-side filtering to remove non-matching lots
+    before = len(intercepted)
+    filtered = [
+        raw for raw in intercepted
+        if _matches_filters(raw, makes, damage_types, year_min, year_max, max_odometer)
+    ]
+    logger.info(
+        "Client-side filter: %d intercepted → %d matched (makes=%s, damage=%s, years=%s-%s, max_odo=%s)",
+        before, len(filtered), makes, damage_types, year_min or "*", year_max or "*", max_odometer or "*",
+    )
+
+    results = [_parse_lot(raw) for raw in filtered]
+    results = [r for r in results if r.get("lot_number")]
+    logger.info("Playwright returned %d lots", len(results))
+    return results
+
+
+def _parse_lot(raw):
+    """Normalize a raw Copart lot dict."""
     lot_number = str(raw.get("lotNumberStr") or raw.get("ln") or "")
     return {
         "lot_number": lot_number,
@@ -91,74 +212,3 @@ def parse_lot(raw):
         "image_url": raw.get("tims") or raw.get("imgUrl"),
         "url": f"https://www.copart.com/lot/{lot_number}",
     }
-
-
-def _passes_filters(lot, max_odometer):
-    """Post-fetch client-side odometer filter."""
-    if max_odometer and lot.get("odometer"):
-        try:
-            odo = int(str(lot["odometer"]).replace(",", "").strip())
-            if odo > max_odometer:
-                return False
-        except (ValueError, TypeError):
-            pass
-    return True
-
-
-def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
-    """
-    Two-step: visit homepage to get cookies, then call search API.
-    """
-    results = []
-
-    with httpx.Client(
-        headers=HEADERS,
-        timeout=30,
-        follow_redirects=True,
-    ) as client:
-        # Step 1 — get session cookies by visiting homepage
-        try:
-            logger.info("Fetching Copart homepage for session cookies...")
-            home_resp = client.get(HOME_URL)
-            logger.info("Homepage status: %d, cookies: %s", home_resp.status_code, list(client.cookies.keys()))
-        except Exception as e:
-            logger.warning("Homepage fetch failed: %s", e)
-
-        # Step 2 — call search API with session cookies
-        for page in range(max_pages):
-            payload = build_payload(
-                makes, damage_types,
-                year_min=year_min, year_max=year_max,
-                page=page,
-            )
-
-            resp = client.post(SEARCH_URL, json=payload)
-            logger.info("Search API page=%d status=%d", page, resp.status_code)
-            resp.raise_for_status()
-
-            data = resp.json()
-            content = (
-                data.get("data", {})
-                    .get("results", {})
-                    .get("content", [])
-            )
-            if not content:
-                logger.info("No more results at page %d", page)
-                break
-
-            for raw in content:
-                lot = parse_lot(raw)
-                if _passes_filters(lot, max_odometer):
-                    results.append(lot)
-
-            total_pages = (
-                data.get("data", {})
-                    .get("results", {})
-                    .get("totalPages", 1)
-            )
-            logger.info("Page %d: got %d lots, total_pages=%d", page, len(content), total_pages)
-            if page + 1 >= total_pages:
-                break
-
-    logger.info("API returned %d lots after filtering", len(results))
-    return results

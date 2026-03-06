@@ -1,6 +1,6 @@
 """
-Copart US API client — correct search-results endpoint.
-Payload format reverse-engineered from browser network traffic.
+Copart US API client.
+Payload format mirrored from working Copart UK implementation.
 """
 
 import httpx
@@ -14,10 +14,13 @@ SEARCH_URL = "https://www.copart.com/public/lots/search-results"
 HEADERS = {
     "Accept": "application/json, text/javascript, */*; q=0.01",
     "Accept-Language": "en-US,en;q=0.9",
+    "Accept-Encoding": "gzip, deflate, br",
     "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",
+    "Connection": "keep-alive",
     "Origin": "https://www.copart.com",
     "Referer": "https://www.copart.com/lotSearchResults",
+    "Cache-Control": "max-age=0",
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -25,41 +28,52 @@ HEADERS = {
     ),
 }
 
+# Map of damage description → Copart US damage field values
+# These are the exact strings Copart returns in the `dd` field
+DAMAGE_FILTER_MAP = {
+    "REAR END":             'damage_description:"REAR END"',
+    "FRONT END":            'damage_description:"FRONT END"',
+    "SIDE":                 'damage_description:"SIDE"',
+    "HAIL":                 'damage_description:"HAIL"',
+    "MINOR DENT/SCRATCHES": 'damage_description:"MINOR DENT/SCRATCHES"',
+    "ALL OVER":             'damage_description:"ALL OVER"',
+    "NORMAL WEAR":          'damage_description:"NORMAL WEAR"',
+    "VANDALISM":            'damage_description:"VANDALISM"',
+}
 
-def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, rows=100):
-    """
-    Build payload matching exact format from Copart browser network requests.
-    Uses freeFormFilters array (confirmed working format).
-    """
-    free_form_filters = []
+
+def build_payload(makes, damage_types, year_min=None, year_max=None,
+                  max_odometer=None, page=0, rows=100):
+    filters = {
+        "AUCTION_COUNTRY_CODE": ["auction_country_code:US"],
+    }
+
+    if year_min and year_max:
+        filters["YEAR"] = [f"lot_year:[{year_min} TO {year_max}]"]
+    elif year_min:
+        filters["YEAR"] = [f"lot_year:[{year_min} TO *]"]
+    elif year_max:
+        filters["YEAR"] = [f"lot_year:[* TO {year_max}]"]
 
     if makes:
-        free_form_filters.append({
-            "displayName": "Make",
-            "name": "make",
-            "values": [m.upper() for m in makes],
-        })
+        filters["MAKE"] = [f'make:"{m.upper()}"' for m in makes]
 
     if damage_types:
-        free_form_filters.append({
-            "displayName": "Primary Damage",
-            "name": "primaryDamage",
-            "values": [d.upper() for d in damage_types],
-        })
+        prid = []
+        for d in damage_types:
+            key = d.upper()
+            if key in DAMAGE_FILTER_MAP:
+                prid.append(DAMAGE_FILTER_MAP[key])
+            else:
+                prid.append(f'damage_description:"{key}"')
+        filters["PRID"] = prid
 
-    year_filters = []
-    if year_min:
-        year_filters.append(f"lot_year:[{year_min} TO *]")
-    if year_max:
-        year_filters.append(f"lot_year:[* TO {year_max}]")
-    if year_min and year_max:
-        year_filters = [f"lot_year:[{year_min} TO {year_max}]"]
+    if max_odometer:
+        filters["ODM"] = [f"orr:[0 TO {max_odometer}]"]
 
-    payload = {
+    return {
         "query": ["*"],
-        "filter": {
-            "AUCTION_COUNTRY_CODE": ["auction_country_code:US"],
-        },
+        "filter": filters,
         "sort": ["auction_date_utc asc"],
         "page": page,
         "size": rows,
@@ -74,21 +88,15 @@ def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, row
         "backUrl": "",
         "includeTagByField": {},
         "rawParams": {},
-        "freeFormFilters": free_form_filters,
     }
-
-    if year_filters:
-        payload["filter"]["YEAR"] = year_filters
-
-    return payload
 
 
 def parse_lot(raw):
     lot_number = str(raw.get("ln") or raw.get("lotNumberStr") or "")
-    year   = raw.get("lcy") or raw.get("y")
-    make   = raw.get("mkn") or raw.get("mk")
-    model  = raw.get("lm")  or raw.get("mdn") or raw.get("md")
-    damage = raw.get("dd")  or raw.get("dmg")
+    year  = raw.get("lcy") or raw.get("y")
+    make  = raw.get("mkn") or raw.get("mk")
+    model = raw.get("lm")  or raw.get("mdn") or raw.get("md")
+    damage = raw.get("dd") or raw.get("dmg")
     return {
         "lot_number": lot_number,
         "title": raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip(),
@@ -134,25 +142,31 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
     return True
 
 
-def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
+def search_api(makes, damage_types, year_min=None, year_max=None,
+               max_odometer=None, max_pages=3):
     results = []
 
     with httpx.Client(headers=HEADERS, timeout=30, follow_redirects=True) as client:
         try:
             home = client.get(HOME_URL)
-            logger.info("Homepage: status=%d cookies=%s", home.status_code, list(client.cookies.keys()))
+            logger.info("Homepage: status=%d cookies=%s",
+                        home.status_code, list(client.cookies.keys()))
         except Exception as e:
             logger.warning("Homepage fetch failed: %s", e)
 
         for page in range(max_pages):
-            payload = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=page)
+            payload = build_payload(
+                makes, damage_types,
+                year_min=year_min, year_max=year_max,
+                max_odometer=max_odometer, page=page
+            )
 
             try:
                 resp = client.post(SEARCH_URL, json=payload)
                 logger.info("Search page=%d status=%d", page, resp.status_code)
                 resp.raise_for_status()
             except Exception as e:
-                logger.warning("Search failed: %s", e)
+                logger.warning("Search failed page=%d: %s", page, e)
                 break
 
             data = resp.json()
@@ -173,12 +187,15 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
             )
 
             logger.info("Page %d: %d lots (totalElements=%d totalPages=%d)",
-                page, len(content), total_elements, total_pages)
+                        page, len(content), total_elements, total_pages)
 
             if not content:
+                # Log raw response snippet to help debug filter syntax
+                raw_text = resp.text[:500]
+                logger.warning("Empty content. Raw response: %s", raw_text)
                 break
 
-            if page == 0 and content:
+            if page == 0:
                 logger.info("SAMPLE: make=%s damage=%s year=%s odo=%s",
                     content[0].get("mkn"), content[0].get("dd"),
                     content[0].get("lcy"), content[0].get("orr"))
@@ -190,7 +207,7 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
                     results.append(lot)
 
             logger.info("Page %d: %d passed filters (running total: %d)",
-                page, len(results) - before, len(results))
+                        page, len(results) - before, len(results))
 
             if page + 1 >= total_pages:
                 break

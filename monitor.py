@@ -92,7 +92,7 @@ def fetch_lots(makes, damage_types, year_min, year_max, max_odometer, max_pages)
         makes, damage_types, year_min or "*", year_max or "*", max_odometer or "*",
     )
     try:
-        lots = search_api(makes, damage_types, year_min=year_min, year_max=year_max, max_pages=max_pages)
+        lots = search_api(makes, damage_types, year_min=year_min, year_max=year_max, max_odometer=max_odometer, max_pages=max_pages)
         if lots:
             logger.info("✅ API succeeded with %d lots", len(lots))
             return lots

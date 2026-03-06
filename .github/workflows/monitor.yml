@@ -3,7 +3,7 @@ name: Copart Monitor
 on:
   schedule:
     # Runs every 2 hours
-    - cron: "0 */12 * * *"
+    - cron: "0 */3 * * *"
   workflow_dispatch:
     inputs:
       dry_run:

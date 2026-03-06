@@ -1,6 +1,7 @@
 """
 Copart US API client.
-Payload format mirrored from working Copart UK implementation.
+Uses YEAR filter only (confirmed working) + client-side filtering for everything else.
+Damage/make filtered client-side since server-side field names are unverified for US.
 """
 
 import httpx
@@ -28,22 +29,12 @@ HEADERS = {
     ),
 }
 
-# Map of damage description → Copart US damage field values
-# These are the exact strings Copart returns in the `dd` field
-DAMAGE_FILTER_MAP = {
-    "REAR END":             'damage_description:"REAR END"',
-    "FRONT END":            'damage_description:"FRONT END"',
-    "SIDE":                 'damage_description:"SIDE"',
-    "HAIL":                 'damage_description:"HAIL"',
-    "MINOR DENT/SCRATCHES": 'damage_description:"MINOR DENT/SCRATCHES"',
-    "ALL OVER":             'damage_description:"ALL OVER"',
-    "NORMAL WEAR":          'damage_description:"NORMAL WEAR"',
-    "VANDALISM":            'damage_description:"VANDALISM"',
-}
 
-
-def build_payload(makes, damage_types, year_min=None, year_max=None,
-                  max_odometer=None, page=0, rows=100):
+def build_payload(year_min=None, year_max=None, page=0, rows=100):
+    """
+    Minimal payload — only YEAR and COUNTRY filters (both confirmed working).
+    Make/damage/odometer are filtered client-side.
+    """
     filters = {
         "AUCTION_COUNTRY_CODE": ["auction_country_code:US"],
     }
@@ -54,21 +45,6 @@ def build_payload(makes, damage_types, year_min=None, year_max=None,
         filters["YEAR"] = [f"lot_year:[{year_min} TO *]"]
     elif year_max:
         filters["YEAR"] = [f"lot_year:[* TO {year_max}]"]
-
-    # NOTE: MAKE filter causes server error on Copart US — filter client-side instead
-    # if makes: filters["MAKE"] = ...
-
-    if damage_types:
-        prid = []
-        for d in damage_types:
-            key = d.upper()
-            if key in DAMAGE_FILTER_MAP:
-                prid.append(DAMAGE_FILTER_MAP[key])
-            else:
-                prid.append(f'damage_description:"{key}"')
-        filters["PRID"] = prid
-
-    # ODM/orr field name unverified for US — filter client-side instead
 
     return {
         "query": ["*"],
@@ -154,11 +130,7 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
             logger.warning("Homepage fetch failed: %s", e)
 
         for page in range(max_pages):
-            payload = build_payload(
-                makes, damage_types,
-                year_min=year_min, year_max=year_max,
-                max_odometer=max_odometer, page=page
-            )
+            payload = build_payload(year_min=year_min, year_max=year_max, page=page)
 
             try:
                 resp = client.post(SEARCH_URL, json=payload)
@@ -189,9 +161,8 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
                         page, len(content), total_elements, total_pages)
 
             if not content:
-                # Log raw response snippet to help debug filter syntax
-                raw_text = resp.text[:500]
-                logger.warning("Empty content. Raw response: %s", raw_text)
+                logger.warning("Empty content on page %d. Response: %s",
+                               page, resp.text[:300])
                 break
 
             if page == 0:
@@ -209,6 +180,7 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
                         page, len(results) - before, len(results))
 
             if page + 1 >= total_pages:
+                logger.info("Reached last page (%d)", total_pages)
                 break
 
     logger.info("API returned %d lots total", len(results))

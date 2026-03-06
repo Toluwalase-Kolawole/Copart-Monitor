@@ -160,8 +160,11 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None,
         except PWTimeout:
             logger.warning("domcontentloaded timeout — continuing anyway")
 
-        # Wait for first page lots to arrive
-        _wait_for_new_lots(intercepted, 0, timeout=10)
+        # Wait for first page — use networkidle to ensure all responses received
+        try:
+            page.wait_for_load_state("networkidle", timeout=20_000)
+        except PWTimeout:
+            pass
         time.sleep(2)
         logger.info("Page 1: %d lots intercepted", len(intercepted))
 

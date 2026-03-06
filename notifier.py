@@ -51,7 +51,7 @@ def send_telegram(
     token: str,
     chat_id: str,
     lots: list[dict],
-    batch_size: int = 10,
+    batch_size: int = 20,
 ) -> bool:
     """
     Send Telegram notifications for a list of new lots.

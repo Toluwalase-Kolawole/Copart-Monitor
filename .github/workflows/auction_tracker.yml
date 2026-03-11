@@ -2,7 +2,7 @@ name: Copart Auction Tracker
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # every 30 minutes
+    - cron: '*/30 * * * *' # every 30 minutes
   workflow_dispatch:
 
 jobs:
@@ -25,16 +25,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python -c "
-import sys, os, logging
-from pathlib import Path
-logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(name)s: %(message)s')
-sys.path.insert(0, str(Path('.').resolve()))
-from monitor import get_config, run_watchlist_check
-config = get_config()
-config['watchlist_file'] = Path('watchlist.json')
-run_watchlist_check(config)
-"
+        run: python run_auction_tracker.py
 
       - name: Commit updated watchlist
         run: |

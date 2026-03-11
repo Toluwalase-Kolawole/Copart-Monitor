@@ -1,17 +1,16 @@
-"""
-Entry point for the auction tracker GitHub Actions workflow.
-Kept separate so auction_tracker.yml avoids inline multi-line python -c "..." YAML.
-"""
-import sys
+"""Entry point for auction_tracker.yml — avoids multi-line Python in YAML."""
 import logging
+import sys
 from pathlib import Path
 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    datefmt="%Y-%m-%dT%H:%M:%S",
+    handlers=[logging.StreamHandler(sys.stdout)],
 )
 
-sys.path.insert(0, str(Path(".").resolve()))
+sys.path.insert(0, str(Path(__file__).parent))
 
 from monitor import get_config, run_watchlist_check
 

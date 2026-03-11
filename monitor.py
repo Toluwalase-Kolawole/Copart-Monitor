@@ -170,6 +170,8 @@ def main():
         if lots_to_track:
             from auction_tracker import add_to_watchlist
             add_to_watchlist(lots_to_track, Path("watchlist.json"))
+            logger.info("Watchlist updated with %d lot(s)", len(lots_to_track))
+        # Always mark seen but only commit watchlist when it actually changed
         state = mark_seen(lots if is_first_run else new_lots, state)
         save_state(state, config["state_file"])
         logger.info("State saved.")

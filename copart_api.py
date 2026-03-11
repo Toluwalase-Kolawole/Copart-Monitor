@@ -140,7 +140,7 @@ def parse_lot(raw):
     }
 
 
-def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
+def _passes_filters(lot, makes, models, damage_types, year_min, year_max, max_odometer):
     # Exclude high-risk secondary damage
     secondary = (lot.get("secondary_damage") or "").upper()
     if secondary and any(excl in secondary for excl in AIRBAG_EXCLUSIONS):
@@ -149,6 +149,13 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
     if makes:
         lot_make = (lot.get("make") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
+            return False
+
+    # Model filter — exact match against the allowed list (client-side enforcement)
+    # The Copart API MODL filter is unreliable and lets unrelated models through
+    if models:
+        lot_model = (lot.get("model") or "").upper().strip()
+        if not any(lot_model == m.upper().strip() for m in models):
             return False
 
     if damage_types:
@@ -252,7 +259,7 @@ def search_api(makes, models, damage_types, year_min=None, year_max=None,
             before = len(results)
             for raw in content:
                 lot = parse_lot(raw)
-                if _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
+                if _passes_filters(lot, makes, models, damage_types, year_min, year_max, max_odometer):
                     results.append(lot)
 
             logger.info("Page %d: %d passed filters (running total: %d)",

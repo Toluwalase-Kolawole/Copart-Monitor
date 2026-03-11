@@ -27,10 +27,12 @@ def _matches_filters(raw, makes, models, damage_types, year_min=None, year_max=N
             return False
 
     # Strict exact model match — same as copart_api.py
-    if models:
-        lot_model = (raw.get("lm") or raw.get("mdn") or raw.get("md") or "").upper().strip()
-        if not any(lot_model == m.upper().strip() for m in models):
-            return False
+    # If no models configured, block everything (fail-safe)
+    if not models:
+        return False
+    lot_model = (raw.get("lm") or raw.get("mdn") or raw.get("md") or "").upper().strip()
+    if not any(lot_model == m.upper().strip() for m in models):
+        return False
 
     if damage_types:
         lot_damage = (raw.get("dd") or raw.get("dmg") or "").upper()

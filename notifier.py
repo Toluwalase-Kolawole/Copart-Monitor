@@ -170,7 +170,8 @@ ALERT_EMOJIS = {
 
 
 def send_bid_alert(token: str, chat_id: str, lot: dict, alert_type: str,
-                   current_bid: float = 0, minutes_left: float = None):
+                   current_bid: float = 0, minutes_left: float = None,
+                   bid_status: str = None, prev_bid: float = None):
     emoji = ALERT_EMOJIS.get(alert_type, "📢")
     title = lot.get("title", "Unknown")
     target = lot.get("target_price", 0)
@@ -189,18 +190,36 @@ def send_bid_alert(token: str, chat_id: str, lot: dict, alert_type: str,
     else:
         status = "BID UPDATE"
 
+    # Bid position badge
+    if bid_status == "HIGH_BIDDER":
+        position_badge = "🟢 YOU'RE WINNING"
+    elif bid_status == "OUTBID":
+        position_badge = "🔴 YOU'VE BEEN OUTBID"
+    else:
+        position_badge = ""
+
     under_by = target - current_bid
     budget_str = (
-        f"✅ \\${under_by:,.0f} under target" if under_by >= 0
+        f"✅ \\${under_by:,.0f} under your target" if under_by >= 0
         else f"❌ \\${-under_by:,.0f} over budget"
     )
-    time_str = f"{int(minutes_left)} min left" if minutes_left else "time unknown"
+    time_str = f"{int(minutes_left)} min left" if minutes_left is not None else "check Copart for time"
     odo_str = f"{int(odo):,} mi" if isinstance(odo, (int, float)) else str(odo)
+
+    # Show bid movement if we have previous bid
+    if prev_bid is not None and prev_bid != current_bid:
+        bid_line = f"💰 Bid: *\\${current_bid:,.0f}* \\(was \\${prev_bid:,.0f}\\)"
+    else:
+        bid_line = f"💰 Current Bid: *\\${current_bid:,.0f}*"
 
     lines = [
         f"{emoji} *{_esc(status)}* \\| {_esc(nlr_tag)}",
         f"🚗 {_esc(title)}",
-        f"💰 Current Bid: *\\${current_bid:,.0f}*",
+    ]
+    if position_badge:
+        lines.append(f"*{_esc(position_badge)}*")
+    lines += [
+        bid_line,
         f"🎯 Your Target: \\${target:,}",
         budget_str,
         f"⏱ {_esc(time_str)}",

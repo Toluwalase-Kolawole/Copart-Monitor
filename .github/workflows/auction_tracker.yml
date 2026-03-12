@@ -28,6 +28,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          COPART_COOKIES: ${{ secrets.COPART_COOKIES }}
         run: python run_auction_tracker.py
 
       - name: Commit updated watchlist

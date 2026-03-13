@@ -9955,5 +9955,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "41841466": {
+    "lot_number": "41841466",
+    "title": "2024 TOYOTA RAV4 PRIME SE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4 PRIME",
+    "trim": "SE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": 18568.0,
+    "location": "NV - RENO",
+    "estimate": 36835.0,
+    "url": "https://www.copart.com/lot/41841466/2024-toyota-rav4-prime-se-nv-reno",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/7fbb8034412e47c0b918325537966e09_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-13T17:06:33.795691+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

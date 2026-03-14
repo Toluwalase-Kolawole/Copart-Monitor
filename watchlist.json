@@ -10171,5 +10171,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "46394176": {
+    "lot_number": "46394176",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "IL - CHICAGO NORTH",
+    "estimate": 32350.0,
+    "url": "https://www.copart.com/lot/46394176/2025-toyota-rav4-xle-il-chicago-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1125/0ef0c0cc9ec1424d9b1c659f4f5710a8_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-14T05:03:03.285759+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

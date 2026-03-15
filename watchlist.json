@@ -10252,5 +10252,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "93393345": {
+    "lot_number": "93393345",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 3832.0,
+    "location": "MI - DETROIT",
+    "estimate": 37270.0,
+    "url": "https://www.copart.com/lot/93393345/clean-title-2025-toyota-rav4-xle-premium-mi-detroit",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1125/09e223f80b184862a0a4b8a44813a289_thb.jpg",
+    "sale_date": 1773756000000,
+    "is_nlr": true,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-15T05:45:15.980270+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -10846,5 +10846,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "46394256": {
+    "lot_number": "46394256",
+    "title": "2022 TOYOTA RAV4 HYBRID XSE",
+    "year": 2022,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 22576.0,
+    "location": "CA - HAYWARD",
+    "estimate": 37900.0,
+    "url": "https://www.copart.com/lot/46394256/2022-toyota-rav4-hybrid-xse-ca-hayward",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/f389959680704eeabdd3f46d62509bde_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-18T05:23:55.274571+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

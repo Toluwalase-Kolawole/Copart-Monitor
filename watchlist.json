@@ -11764,5 +11764,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "46733086": {
+    "lot_number": "46733086",
+    "title": "2023 TOYOTA RAV4 HYBRID XLE PREMIUM",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE PREMIUM",
+    "damage": "HAIL",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 23501.0,
+    "location": "IL - CHICAGO SOUTH",
+    "estimate": 33690.0,
+    "url": "https://www.copart.com/lot/46733086/2023-toyota-rav4-hybrid-xle-premium-il-chicago-south",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/7572d49c15dc439cbdfd7083a34d84cc_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-21T13:54:56.349890+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -11737,5 +11737,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "46935236": {
+    "lot_number": "46935236",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 8219.0,
+    "location": "CA - FRESNO",
+    "estimate": 39123.0,
+    "url": "https://www.copart.com/lot/46935236/2025-toyota-rav4-hybrid-xle-premium-ca-fresno",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/4c2bd48f3f6d446ab40c2e1c4d3c3824_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-21T04:55:28.989744+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

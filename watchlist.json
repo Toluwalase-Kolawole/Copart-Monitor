@@ -12007,5 +12007,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "47251846": {
+    "lot_number": "47251846",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 6129.0,
+    "location": "PA - PHILADELPHIA",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/47251846/2025-toyota-rav4-xle-premium-pa-philadelphia",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/ea884d6c92a346a69556a1db6f4722fe_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-24T05:16:42.037115+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

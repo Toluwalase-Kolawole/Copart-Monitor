@@ -12979,5 +12979,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "47834266": {
+    "lot_number": "47834266",
+    "title": "2024 TOYOTA RAV4 LE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 7797.0,
+    "location": "CA - SAN JOSE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/47834266/2024-toyota-rav4-le-ca-san-jose",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/0877b2cf572f416c8a024f7c5aa5f350_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-28T05:15:53.219211+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

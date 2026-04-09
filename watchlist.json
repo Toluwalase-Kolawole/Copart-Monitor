@@ -15382,5 +15382,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "49334296": {
+    "lot_number": "49334296",
+    "title": "2024 TOYOTA RAV4 XSE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 15189.0,
+    "location": "CA - SAN JOSE",
+    "estimate": 42150.0,
+    "url": "https://www.copart.com/lot/49334296/2024-toyota-rav4-xse-ca-san-jose",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/71276e858bcb4b10a98df8532c5c45fe_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-09T02:33:42.397541+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

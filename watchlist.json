@@ -15409,5 +15409,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "49176816": {
+    "lot_number": "49176816",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "FL - TAMPA SOUTH",
+    "estimate": 26507.0,
+    "url": "https://www.copart.com/lot/49176816/2025-toyota-rav4-le-fl-tampa-south",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/2f21cf13e1c64eaa9e7d9741c977b602_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-09T13:46:23.217247+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

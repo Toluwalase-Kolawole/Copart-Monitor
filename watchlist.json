@@ -15544,5 +15544,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "49604436": {
+    "lot_number": "49604436",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 17527.0,
+    "location": "AK - ANCHORAGE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/49604436/2025-toyota-rav4-xle-ak-anchorage",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/afb70896e1394d20bbcd186858d23a42_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-10T02:45:16.052154+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

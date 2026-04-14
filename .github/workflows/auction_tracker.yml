@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: copart-auction-tracker
+  cancel-in-progress: false
+
 jobs:
   track:
     runs-on: ubuntu-latest
@@ -29,12 +33,30 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           COPART_COOKIES: ${{ secrets.COPART_COOKIES }}
+          COPART_TARGET_PRICES: ${{ vars.COPART_TARGET_PRICES }}
+          COPART_STALE_DAYS: ${{ vars.COPART_STALE_DAYS }}
         run: python run_auction_tracker.py
 
-      - name: Commit updated watchlist
+      - name: Generate spreadsheets
+        env:
+          COPART_MAKES: ${{ vars.COPART_MAKES }}
+          COPART_MODELS: ${{ vars.COPART_MODELS }}
+        run: python generate_spreadsheets.py --all
+
+      - name: Upload spreadsheets as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: copart-spreadsheets
+          path: |
+            copart_lots.xlsx
+            copart_auctions.xlsx
+          retention-days: 7
+
+      - name: Commit updated watchlist and spreadsheets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add watchlist.json
-          git add watchlist_archive.json 2>/dev/null || true
+          git add watchlist.json watchlist_archive.json
+          git add copart_lots.xlsx copart_auctions.xlsx 2>/dev/null || true
           git diff --staged --quiet || (git commit -m "chore: update watchlist [skip ci]" && git pull --rebase && git push)
+

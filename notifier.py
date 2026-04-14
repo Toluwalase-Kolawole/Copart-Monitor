@@ -5,6 +5,7 @@ Drive status (RUNS AND DRIVES / STATIONARY etc.) and keys shown on every alert.
 """
 import logging
 import httpx
+from datetime import datetime, timezone, timedelta
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +21,6 @@ def _format_sale_date(ts_ms) -> str:
     if not ts_ms:
         return "TBD"
     try:
-        from datetime import datetime, timezone
         ts = int(ts_ms)
         if ts > 1_000_000_000_000:
             ts = ts / 1000
@@ -202,8 +202,6 @@ def send_daily_digest(token: str, chat_id: str, watchlist: dict, archive: dict):
     - Lots closing within 24 hours
     - Archive stats (total closed auctions)
     """
-    from datetime import datetime, timezone
-
     now = datetime.now(timezone.utc)
     active_lots = list(watchlist.values())
     total_active = len(active_lots)
@@ -231,7 +229,6 @@ def send_daily_digest(token: str, chat_id: str, watchlist: dict, archive: dict):
             ts = int(sale_date)
             if ts > 1_000_000_000_000:
                 ts /= 1000
-            from datetime import timedelta
             close_time = datetime.fromtimestamp(ts, tz=timezone.utc)
             hours_left = (close_time - now).total_seconds() / 3600
             if 0 < hours_left <= 24:

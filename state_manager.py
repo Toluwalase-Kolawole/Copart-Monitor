@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_STATE_FILE = Path("state.json")
 
 _EMPTY_STATE = {"seen_lots": [], "lot_details": {}, "last_run": None, "total_seen": 0}
+MAX_SEEN_LOTS = 5000  # Cap on how many lot numbers we keep in state
 
 
 def _backup_path(path: Path) -> Path:
@@ -66,8 +67,8 @@ def save_state(state: dict, path: Path = DEFAULT_STATE_FILE) -> None:
     details = state.get("lot_details", {})
 
     # Cap to last 5000 to keep file size manageable
-    if len(seen) > 5000:
-        seen = seen[-5000:]
+    if len(seen) > MAX_SEEN_LOTS:
+        seen = seen[-MAX_SEEN_LOTS:]
         seen_set = set(seen)
         details = {k: v for k, v in details.items() if k in seen_set}
 

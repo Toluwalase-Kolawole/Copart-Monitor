@@ -303,7 +303,12 @@ def check_watchlist(watchlist_file, notifier_fn):
         return
     cookies_dict = _parse_cookies_dict(cookie_str) if cookie_str else {}
     now = datetime.now(timezone.utc)
-    stale_days = int(os.environ.get("COPART_STALE_DAYS", "7"))
+    stale_days_raw = os.environ.get("COPART_STALE_DAYS", "7").strip()
+    try:
+        stale_days = int(stale_days_raw)
+    except (ValueError, TypeError):
+        logger.warning("Invalid COPART_STALE_DAYS=%r — defaulting to 7", stale_days_raw)
+        stale_days = 7
     stale_cutoff = now - timedelta(days=stale_days)
 
     to_close = []

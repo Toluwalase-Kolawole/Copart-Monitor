@@ -17164,5 +17164,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "50606386": {
+    "lot_number": "50606386",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 977.0,
+    "location": "CT - HARTFORD SPRINGFIELD",
+    "estimate": 30850.0,
+    "url": "https://www.copart.com/lot/50606386/2025-toyota-rav4-xle-ct-hartford-springfield",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/b2d1cb8f629d46699e60edc253252ee1_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-21T13:47:01.038818+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

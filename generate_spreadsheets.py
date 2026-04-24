@@ -5,6 +5,7 @@ Reads state.json, watchlist.json, and watchlist_archive.json and produces:
   - copart_auctions.xlsx  → Bid snapshots, history, and final bid analysis
 """
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -37,6 +38,16 @@ THIN_BORDER = Border(left=THIN, right=THIN, top=THIN, bottom=THIN)
 CENTER = Alignment(horizontal="center", vertical="center", wrap_text=False)
 LEFT   = Alignment(horizontal="left",   vertical="center", wrap_text=False)
 WRAP   = Alignment(horizontal="left",   vertical="center", wrap_text=True)
+
+
+def _monitor_label() -> str:
+    """Build a short label from COPART_MAKES / COPART_MODELS env vars."""
+    makes = [m.strip() for m in os.environ.get("COPART_MAKES", "").split(",") if m.strip()]
+    models = [m.strip() for m in os.environ.get("COPART_MODELS", "").split(",") if m.strip()]
+    parts = makes[:1] + models[:2]   # e.g. ["Toyota", "RAV4", "RAV4 HYBRID"]
+    if parts:
+        return " / ".join(parts)
+    return "Vehicle"
 
 
 def _header(ws, col, row, value, width=None):
@@ -167,7 +178,7 @@ def build_lots_sheet(wb, lot_details: dict):
     # Add summary info at the top using a title row
     ws.insert_rows(1)
     ws.row_dimensions[1].height = 18
-    title_cell = ws.cell(row=1, column=1, value=f"Copart RAV4 Monitor — All Seen Lots")
+    title_cell = ws.cell(row=1, column=1, value=f"Copart {_monitor_label()} Monitor — All Seen Lots")
     title_cell.font = Font(name="Arial", bold=True, size=12, color="FFFFFF")
     title_cell.fill = PatternFill("solid", start_color="1A3A5C")
     title_cell.alignment = LEFT
@@ -204,7 +215,7 @@ def build_watchlist_sheet(wb, watchlist: dict, title="Active Watchlist"):
 
     # Title row
     ws.row_dimensions[1].height = 18
-    tc = ws.cell(row=1, column=1, value=f"Copart Auction Tracker — {title}")
+    tc = ws.cell(row=1, column=1, value=f"Copart {_monitor_label()} Tracker — {title}")
     tc.font = Font(name="Arial", bold=True, size=12, color="FFFFFF")
     tc.fill = PatternFill("solid", start_color="1A3A5C")
     tc.alignment = LEFT
@@ -271,7 +282,7 @@ def build_bid_history_sheet(wb, all_lots: dict):
         ("Status", 14), ("Drive Status", 18), ("NLR/Broker", 12),
     ]
 
-    tc = ws.cell(row=1, column=1, value="Copart Auction Tracker — Bid Snapshot History")
+    tc = ws.cell(row=1, column=1, value=f"Copart {_monitor_label()} Tracker — Bid Snapshot History")
     tc.font = Font(name="Arial", bold=True, size=12, color="FFFFFF")
     tc.fill = PatternFill("solid", start_color="1A3A5C")
     tc.alignment = LEFT
@@ -335,7 +346,7 @@ def build_final_bid_sheet(wb, archive: dict):
         ("Auction Result", 14), ("Closed At", 22), ("URL", 45),
     ]
 
-    tc = ws.cell(row=1, column=1, value="Copart Auction Tracker — Final Bid Analysis (Closed Auctions)")
+    tc = ws.cell(row=1, column=1, value=f"Copart {_monitor_label()} Tracker — Final Bid Analysis (Closed Auctions)")
     tc.font = Font(name="Arial", bold=True, size=12, color="FFFFFF")
     tc.fill = PatternFill("solid", start_color="1A3A5C")
     tc.alignment = LEFT

@@ -17974,5 +17974,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "51191016": {
+    "lot_number": "51191016",
+    "title": "2023 TOYOTA RAV4 HYBRID XLE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 27985.0,
+    "location": "WI - MILWAUKEE SOUTH",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/51191016/2023-toyota-rav4-hybrid-xle-wi-milwaukee-south",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/fdb1ddd215f7424a9bcb074f451b740b_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-25T02:38:52.598308+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

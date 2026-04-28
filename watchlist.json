@@ -18271,5 +18271,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "47836956": {
+    "lot_number": "47836956",
+    "title": "2023 TOYOTA RAV4 HYBRID XSE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 21283.0,
+    "location": "CA - SAN JOSE",
+    "estimate": 37975.0,
+    "url": "https://www.copart.com/lot/47836956/salvage-2023-toyota-rav4-hybrid-xse-ca-san-jose",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/b96dbaa7dac1498b9d21c6a691ee9057_thb.jpg",
+    "sale_date": 1777575600000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-28T03:27:27.022344+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

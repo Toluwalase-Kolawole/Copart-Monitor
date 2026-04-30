@@ -18622,5 +18622,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52069706": {
+    "lot_number": "52069706",
+    "title": "2024 TOYOTA RAV4 PRIME SE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4 PRIME",
+    "trim": "SE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 25551.0,
+    "location": "NY - NEWBURGH",
+    "estimate": 40216.0,
+    "url": "https://www.copart.com/lot/52069706/2024-toyota-rav4-prime-se-ny-newburgh",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/01e09a63b60a47fb84f79e27982fd1b9_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-30T14:01:38.867509+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

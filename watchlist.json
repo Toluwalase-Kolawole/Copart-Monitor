@@ -18595,5 +18595,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52096256": {
+    "lot_number": "52096256",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 18042.0,
+    "location": "NV - 57 Storage",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/52096256/2025-toyota-rav4-le-nv-57-storage",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/670e828c4f9e4696914e877f4ff47d54_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-30T08:25:16.120225+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

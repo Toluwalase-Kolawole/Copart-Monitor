@@ -19000,5 +19000,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "51926196": {
+    "lot_number": "51926196",
+    "title": "2023 TOYOTA RAV4 LE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 27151.0,
+    "location": "IL - CHICAGO SOUTH",
+    "estimate": 30105.0,
+    "url": "https://www.copart.com/lot/51926196/2023-toyota-rav4-le-il-chicago-south",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/473740fb989b427db89202a90c093455_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-01T19:16:04.396525+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

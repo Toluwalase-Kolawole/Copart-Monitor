@@ -19162,5 +19162,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "51752856": {
+    "lot_number": "51752856",
+    "title": "2024 TOYOTA RAV4 HYBRID XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "HAIL",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 11667.0,
+    "location": "OH - CLEVELAND WEST",
+    "estimate": 31664.0,
+    "url": "https://www.copart.com/lot/51752856/2024-toyota-rav4-hybrid-xle-oh-cleveland-west",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/58f30bef6f2e429fbd52767a3b41cbdb_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-02T15:50:09.985535+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

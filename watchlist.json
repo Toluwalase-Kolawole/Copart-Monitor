@@ -19540,5 +19540,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "75787955": {
+    "lot_number": "75787955",
+    "title": "2024 TOYOTA RAV4 XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "MINOR DENT/SCRATCHES",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 11362.0,
+    "location": "CA - NAPA",
+    "estimate": 26180.0,
+    "url": "https://www.copart.com/lot/75787955/clean-title-2024-toyota-rav4-xle-ca-napa",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/b34693cb8f2b405ab9441cff1c2f8815_thb.jpg",
+    "sale_date": 1778169600000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-05T19:24:30.764462+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

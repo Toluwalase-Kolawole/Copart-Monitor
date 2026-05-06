@@ -19648,5 +19648,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52202536": {
+    "lot_number": "52202536",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 3442.0,
+    "location": "PA - PHILADELPHIA EAST-SUBLOT",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/52202536/2025-toyota-rav4-le-pa-philadelphia-east-sublot",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/4656a83fe7cc49038936c36155429130_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-06T14:20:05.646165+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

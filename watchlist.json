@@ -20134,5 +20134,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52738346": {
+    "lot_number": "52738346",
+    "title": "2025 TOYOTA RAV4 XSE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 16481.0,
+    "location": "UT - SALT LAKE CITY",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/52738346/2025-toyota-rav4-xse-ut-salt-lake-city",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/1a14876dcabd40aeada96d812d79063c_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-08T03:22:01.771586+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

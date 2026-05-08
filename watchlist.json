@@ -20188,5 +20188,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "53011606": {
+    "lot_number": "53011606",
+    "title": "2022 TOYOTA RAV4 XLE",
+    "year": 2022,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 25809.0,
+    "location": "FL - ORLANDO NORTH",
+    "estimate": 24528.0,
+    "url": "https://www.copart.com/lot/53011606/2022-toyota-rav4-xle-fl-orlando-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/03f1d64776bf48fb87dcb35271810d0f_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-08T19:21:39.792642+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

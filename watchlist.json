@@ -20161,5 +20161,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "50251586": {
+    "lot_number": "50251586",
+    "title": "2023 TOYOTA RAV4 PRIME SE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4 PRIME",
+    "trim": "SE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 11666.0,
+    "location": "MA - NORTH BOSTON",
+    "estimate": 34313.0,
+    "url": "https://www.copart.com/lot/50251586/salvage-2023-toyota-rav4-prime-se-ma-north-boston",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/5d4dc342abd94e13b225830280b885d9_thb.jpg",
+    "sale_date": 1781100000000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-08T13:54:08.611092+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

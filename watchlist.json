@@ -20890,5 +20890,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52332346": {
+    "lot_number": "52332346",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 13616.0,
+    "location": "FL - JACKSONVILLE NORTH",
+    "estimate": 32500.0,
+    "url": "https://www.copart.com/lot/52332346/clean-title-2025-toyota-rav4-le-fl-jacksonville-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/1fa1a1f2171b4ab68efba1f8c9b9016b_thb.jpg",
+    "sale_date": 1779120000000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-13T03:37:53.206169+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

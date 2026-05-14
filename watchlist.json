@@ -21349,5 +21349,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "53256586": {
+    "lot_number": "53256586",
+    "title": "2022 TOYOTA RAV4 XSE",
+    "year": 2022,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 26544.0,
+    "location": "KY - LEXINGTON EAST",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/53256586/2022-toyota-rav4-xse-ky-lexington-east",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/76d32ec2287a4e6581cdd2be14b4d1cf_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-14T19:48:51.237623+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

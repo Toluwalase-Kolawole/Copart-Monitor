@@ -21376,5 +21376,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52949296": {
+    "lot_number": "52949296",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 23868.0,
+    "location": "AZ - PHOENIX",
+    "estimate": 31262.0,
+    "url": "https://www.copart.com/lot/52949296/2025-toyota-rav4-hybrid-xle-az-phoenix",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/6736b96b9a0d46db871f0b1805a452b9_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-14T22:13:11.415168+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

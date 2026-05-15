@@ -21403,5 +21403,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52821996": {
+    "lot_number": "52821996",
+    "title": "2025 TOYOTA RAV4   ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 4654.0,
+    "location": "MA - WEST WARREN",
+    "estimate": 38525.0,
+    "url": "https://www.copart.com/lot/52821996/salvage-2025-toyota-rav4-ma-west-warren",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/e7445b8d447f4114a84dec5bc499fb8d_thb.jpg",
+    "sale_date": 1780495200000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-15T16:52:34.684722+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

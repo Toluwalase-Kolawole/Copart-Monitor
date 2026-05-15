@@ -21538,5 +21538,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "54044786": {
+    "lot_number": "54044786",
+    "title": "2024 TOYOTA RAV4 LIMITED",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LIMITED",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 23806.0,
+    "location": "NC - MOCKSVILLE",
+    "estimate": 43746.0,
+    "url": "https://www.copart.com/lot/54044786/2024-toyota-rav4-limited-nc-mocksville",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/0897c44044cc4f7cbdd4ecd9f39c71fa_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-15T22:01:12.227146+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

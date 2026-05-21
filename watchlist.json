@@ -22240,5 +22240,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "54667686": {
+    "lot_number": "54667686",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 10569.0,
+    "location": "CA - ANTELOPE",
+    "estimate": 35695.0,
+    "url": "https://www.copart.com/lot/54667686/2025-toyota-rav4-xle-premium-ca-antelope",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/633f4ec656ec4695a71ca412429f6cbe_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-21T03:56:47.786305+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

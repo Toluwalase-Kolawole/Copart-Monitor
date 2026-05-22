@@ -22861,5 +22861,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "54592616": {
+    "lot_number": "54592616",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 4932.0,
+    "location": "AL - TANNER",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/54592616/2025-toyota-rav4-hybrid-xle-al-tanner",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/442af3d9aa914ebfaad18e9a77e19b5f_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-22T17:09:52.829074+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

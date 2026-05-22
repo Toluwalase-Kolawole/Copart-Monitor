@@ -23023,5 +23023,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "54532356": {
+    "lot_number": "54532356",
+    "title": "2026 TOYOTA RAV4 PLUG-IN HYBRID XSE",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4 PLUG-IN HYBRID",
+    "trim": "XSE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": 1355.0,
+    "location": "WA - NORTH SEATTLE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/54532356/2026-toyota-rav4-plug-in-hybrid-xse-wa-north-seattle",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/08c1b7c8c0e841918db1333775f3c13b_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-22T22:09:39.336415+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

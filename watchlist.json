@@ -23050,5 +23050,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "50963356": {
+    "lot_number": "50963356",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 26648.0,
+    "location": "MA - NORTH BOSTON",
+    "estimate": 28332.0,
+    "url": "https://www.copart.com/lot/50963356/2025-toyota-rav4-xle-ma-north-boston",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/b006f5123f294a87932c5b28b91610c0_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-23T19:13:29.745931+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

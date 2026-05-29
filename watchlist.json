@@ -23860,5 +23860,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "55455676": {
+    "lot_number": "55455676",
+    "title": "2024 TOYOTA RAV4 XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 29696.0,
+    "location": "CA - FRESNO",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/55455676/2024-toyota-rav4-xle-ca-fresno",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/ce329b44119048cbb2671c4cc4ff90ce_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-29T03:51:38.211623+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -24157,5 +24157,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "55323116": {
+    "lot_number": "55323116",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 2191.0,
+    "location": "TX - DALLAS SOUTH",
+    "estimate": 33154.0,
+    "url": "https://www.copart.com/lot/55323116/2025-toyota-rav4-le-tx-dallas-south",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/dad971842fb74ce0875155ee83d6f6b5_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-29T22:38:06.333007+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -24184,5 +24184,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "55814266": {
+    "lot_number": "55814266",
+    "title": "2023 TOYOTA RAV4 XLE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "NV - 57 Storage",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/55814266/2023-toyota-rav4-xle-nv-57-storage",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/b8767b5a629141508d85fb24e63e5106_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-05-30T08:30:07.648400+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

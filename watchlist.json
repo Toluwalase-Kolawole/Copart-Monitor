@@ -24238,5 +24238,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "54914906": {
+    "lot_number": "54914906",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 13004.0,
+    "location": "NY - NEWBURGH",
+    "estimate": 33963.0,
+    "url": "https://www.copart.com/lot/54914906/2025-toyota-rav4-hybrid-xle-ny-newburgh",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/7028a4a8353242879a1bb1189c57bb46_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-01T11:39:11.700022+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

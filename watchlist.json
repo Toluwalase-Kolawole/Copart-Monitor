@@ -24265,5 +24265,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "55619206": {
+    "lot_number": "55619206",
+    "title": "2023 TOYOTA RAV4 LE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "ME - LYMAN",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/55619206/2023-toyota-rav4-le-me-lyman",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/d6a4547bf90343d4a7ee9cf6ec0410b3_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-01T17:44:19.678989+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

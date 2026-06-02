@@ -24562,5 +24562,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "55892216": {
+    "lot_number": "55892216",
+    "title": "2024 TOYOTA RAV4 XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 26558.0,
+    "location": "CA - RANCHO CUCAMONGA",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/55892216/2024-toyota-rav4-xle-ca-rancho-cucamonga",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/cab1923b4eda447fba59e2a15b24c790_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-02T23:03:28.408504+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

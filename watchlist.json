@@ -25912,5 +25912,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "53795916": {
+    "lot_number": "53795916",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 9870.0,
+    "location": "CA - ANTELOPE",
+    "estimate": 31321.0,
+    "url": "https://www.copart.com/lot/53795916/salvage-2025-toyota-rav4-le-ca-antelope",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/9c807a950a0d43a1a15173954ae12ecc_thb.jpg",
+    "sale_date": 1781636400000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-10T03:56:09.970937+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

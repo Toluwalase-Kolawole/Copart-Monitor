@@ -26101,5 +26101,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "57019666": {
+    "lot_number": "57019666",
+    "title": "2024 TOYOTA RAV4 XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 26294.0,
+    "location": "TX - DALLAS",
+    "estimate": 26255.0,
+    "url": "https://www.copart.com/lot/57019666/2024-toyota-rav4-xle-tx-dallas",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/cd9fdf5d176e4b7781ddb7b7c192eda8_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-10T22:53:03.853623+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

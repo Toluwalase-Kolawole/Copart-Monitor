@@ -26857,5 +26857,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "54917216": {
+    "lot_number": "54917216",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 11757.0,
+    "location": "CA - SACRAMENTO",
+    "estimate": 42665.0,
+    "url": "https://www.copart.com/lot/54917216/salvage-2025-toyota-rav4-xle-premium-ca-sacramento",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/63b294162bd741be80da9ee344a7c560_thb.jpg",
+    "sale_date": 1781809200000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-13T03:58:51.647325+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -27370,5 +27370,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "45580146": {
+    "lot_number": "45580146",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 25135.0,
+    "location": "NJ - GLASSBORO WEST",
+    "estimate": 33500.0,
+    "url": "https://www.copart.com/lot/45580146/2025-toyota-rav4-le-nj-glassboro-west",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/55ac5c1b48b14985902fbe921e7ebdd7_thb.jpg",
+    "sale_date": 1781712000000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-17T04:18:47.918057+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

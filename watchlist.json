@@ -27532,5 +27532,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "56329466": {
+    "lot_number": "56329466",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 7354.0,
+    "location": "FL - MIAMI SOUTH",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/56329466/clean-title-2025-toyota-rav4-xle-fl-miami-south",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/05adf4e478734107ad3b020f66d9926f_thb.jpg",
+    "sale_date": 1782230400000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-18T15:29:25.409409+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

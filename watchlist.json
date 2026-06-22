@@ -27964,5 +27964,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "58240876": {
+    "lot_number": "58240876",
+    "title": "2026 TOYOTA RAV4 LIMITED",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LIMITED",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 1647.0,
+    "location": "TX - AMARILLO",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/58240876/2026-toyota-rav4-limited-tx-amarillo",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/240dbe3bdd6c409498040e1ecfc3b782_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-22T12:08:02.207784+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

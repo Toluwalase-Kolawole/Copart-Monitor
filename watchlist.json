@@ -28099,5 +28099,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "58579366": {
+    "lot_number": "58579366",
+    "title": "2024 TOYOTA RAV4 XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "HAIL",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 12657.0,
+    "location": "WI - MADISON SOUTH",
+    "estimate": 33324.0,
+    "url": "https://www.copart.com/lot/58579366/2024-toyota-rav4-xle-wi-madison-south",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/3842c3c21b0e4bc3840a1a36d8227a17_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-22T22:48:29.334077+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

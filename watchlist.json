@@ -28234,5 +28234,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "58363076": {
+    "lot_number": "58363076",
+    "title": "2026 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": 300.0,
+    "location": "FL - ORLANDO NORTH",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/58363076/2026-toyota-rav4-xle-premium-fl-orlando-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/90408c94f34a4d089975f4268654bcac_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-23T17:18:49.788426+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

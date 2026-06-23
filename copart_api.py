@@ -5,6 +5,7 @@ NLR flag is tracked per-lot so Telegram can label them distinctly.
 """
 import httpx
 import logging
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -178,6 +179,26 @@ def _passes_filters(lot, makes, models, damage_types, year_min, year_max, max_od
     return True
 
 
+def _post_with_retry(client, url, payload, max_retries=3, base_delay=2):
+    """POST with exponential backoff — raises on final failure."""
+    last_exc = None
+    for attempt in range(max_retries):
+        try:
+            resp = client.post(url, json=payload)
+            resp.raise_for_status()
+            return resp
+        except Exception as exc:
+            last_exc = exc
+            if attempt < max_retries - 1:
+                delay = base_delay * (2 ** attempt)
+                logger.warning(
+                    "Search POST failed (attempt %d/%d): %s — retrying in %ds",
+                    attempt + 1, max_retries, exc, delay,
+                )
+                time.sleep(delay)
+    raise last_exc
+
+
 def search_api(makes, models, damage_types, year_min=None, year_max=None,
                max_odometer=None, max_pages=3):
     results = []
@@ -197,11 +218,10 @@ def search_api(makes, models, damage_types, year_min=None, year_max=None,
                 page=page, rows=rows
             )
             try:
-                resp = client.post(SEARCH_URL, json=payload)
+                resp = _post_with_retry(client, SEARCH_URL, payload)
                 logger.info("Search page=%d status=%d", page, resp.status_code)
-                resp.raise_for_status()
             except Exception as e:
-                logger.warning("Search failed page=%d: %s", page, e)
+                logger.warning("Search failed page=%d after retries: %s", page, e)
                 break
 
             data = resp.json()

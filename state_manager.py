@@ -1,9 +1,14 @@
 """
 State management — tracks which lots have been seen and stores full lot details
 so they can be exported to a spreadsheet at any time.
+
+Corruption guard: every save writes to a .tmp file first, then atomically
+replaces the live file and keeps a .backup copy of the previous version.
+On a corrupt/missing live file, load_state falls back to the .backup.
 """
 import json
 import logging
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -11,23 +16,50 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_STATE_FILE = Path("state.json")
 
+_EMPTY_STATE = {"seen_lots": [], "lot_details": {}, "last_run": None, "total_seen": 0}
+MAX_SEEN_LOTS = 5000  # Cap on how many lot numbers we keep in state
+
+
+def _backup_path(path: Path) -> Path:
+    return path.with_suffix(".backup")
+
+
+def _try_load(path: Path) -> dict | None:
+    """Return parsed state dict or None on failure."""
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if "lot_details" not in data:
+            data["lot_details"] = {}
+        return data
+    except Exception:
+        return None
+
 
 def load_state(path: Path = DEFAULT_STATE_FILE) -> dict:
     if not path.exists():
         logger.info("No existing state file, starting fresh")
-        return {"seen_lots": [], "lot_details": {}, "last_run": None, "total_seen": 0}
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        # Migrate old format (seen_lots was a list of strings, no lot_details)
-        if "lot_details" not in data:
-            data["lot_details"] = {}
+        return {**_EMPTY_STATE}
+
+    data = _try_load(path)
+    if data is not None:
         logger.info("Loaded state: %d seen lots, last run: %s",
                     len(data.get("seen_lots", [])), data.get("last_run"))
         return data
-    except Exception as e:
-        logger.error("Failed to load state file: %s — starting fresh", e)
-        return {"seen_lots": [], "lot_details": {}, "last_run": None, "total_seen": 0}
+
+    logger.error("State file corrupt — trying backup")
+    bp = _backup_path(path)
+    if bp.exists():
+        data = _try_load(bp)
+        if data is not None:
+            logger.info("Recovered state from backup: %d seen lots",
+                        len(data.get("seen_lots", [])))
+            return data
+        logger.error("Backup also corrupt — starting fresh")
+    else:
+        logger.error("No backup found — starting fresh")
+
+    return {**_EMPTY_STATE}
 
 
 def save_state(state: dict, path: Path = DEFAULT_STATE_FILE) -> None:
@@ -35,9 +67,8 @@ def save_state(state: dict, path: Path = DEFAULT_STATE_FILE) -> None:
     details = state.get("lot_details", {})
 
     # Cap to last 5000 to keep file size manageable
-    if len(seen) > 5000:
-        seen = seen[-5000:]
-        # Also prune lot_details to only keep seen lots
+    if len(seen) > MAX_SEEN_LOTS:
+        seen = seen[-MAX_SEEN_LOTS:]
         seen_set = set(seen)
         details = {k: v for k, v in details.items() if k in seen_set}
 
@@ -45,8 +76,15 @@ def save_state(state: dict, path: Path = DEFAULT_STATE_FILE) -> None:
     state["lot_details"] = details
     state["last_run"] = datetime.now(timezone.utc).isoformat()
 
-    with open(path, "w", encoding="utf-8") as f:
+    # Atomic write: temp → backup old → replace live
+    tmp_path = path.with_suffix(".tmp")
+    with open(tmp_path, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=2, ensure_ascii=False)
+
+    if path.exists():
+        shutil.copy2(path, _backup_path(path))
+
+    tmp_path.replace(path)
     logger.info("Saved state: %d seen lots", len(seen))
 
 

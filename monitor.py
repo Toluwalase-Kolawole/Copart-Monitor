@@ -190,12 +190,20 @@ if __name__ == "__main__":
 def run_watchlist_check(config):
     """Called by auction_tracker to check active bid updates."""
     from auction_tracker import check_watchlist
-    from notifier import send_bid_alert
+    from notifier import send_bid_alert, send_cookie_expired_alert
 
     watchlist_file = config.get("watchlist_file", Path("watchlist.json"))
 
     def notifier(lot, alert_type, current_bid=0, minutes_left=None,
                  bid_status=None, prev_bid=None):
+        if alert_type == "cookie_expired":
+            send_cookie_expired_alert(
+                token=config["telegram_token"],
+                chat_id=config["telegram_chat_id"],
+            )
+            return
+        if lot is None:
+            return
         send_bid_alert(
             token=config["telegram_token"],
             chat_id=config["telegram_chat_id"],

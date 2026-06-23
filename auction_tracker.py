@@ -3,12 +3,17 @@ Copart Auction Tracker — Phase 2
 Monitors active lots for bid price and auction close time.
 Uses the authenticated /data/lotdetails/dynamic/{lot} endpoint.
 Requires COPART_COOKIES secret to be set in GitHub Actions.
+
+Optional env vars:
+  COPART_TARGET_PRICES  JSON mapping "MAKE:MODEL" or "YEAR:MAKE:MODEL" → max price
+                        e.g. {"TOYOTA:RAV4": 7000, "2023:HONDA:CR-V": 5500}
+  COPART_STALE_DAYS     Days before an active lot with no close event is pruned (default 7)
 """
 import httpx
 import json
 import logging
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
@@ -30,7 +35,12 @@ HEADERS = {
 }
 
 DEFAULT_MAX_BID = 6000
-TARGET_PRICES = {
+
+# Sentinel returned by get_bid_details on authentication failure
+AUTH_FAILED = object()
+
+# ── Hardcoded fallback target prices ────────────────────────────────────────
+_FALLBACK_TARGET_PRICES = {
     ("2027", "TOYOTA", "RAV4"): 7000,
     ("2026", "TOYOTA", "RAV4"): 7000,
     ("2025", "TOYOTA", "RAV4"): 7000,
@@ -40,13 +50,47 @@ TARGET_PRICES = {
 }
 
 
-def get_target_price(year, make, model):
+def _load_target_prices() -> dict:
+    """
+    Parse COPART_TARGET_PRICES env var (JSON) into the internal price dict.
+    Keys can be "MAKE:MODEL" (all years) or "YEAR:MAKE:MODEL".
+    Falls back to hardcoded defaults if the variable is absent or invalid.
+    """
+    raw = os.environ.get("COPART_TARGET_PRICES", "").strip()
+    if raw:
+        try:
+            data = json.loads(raw)
+            parsed = {}
+            for key, price in data.items():
+                parts = [p.strip().upper() for p in key.split(":")]
+                if len(parts) == 3:
+                    parsed[tuple(parts)] = int(price)          # (year, make, model)
+                elif len(parts) == 2:
+                    parsed[("*", parts[0], parts[1])] = int(price)  # wildcard year
+                else:
+                    logger.warning("Ignoring malformed COPART_TARGET_PRICES key: %r", key)
+            if parsed:
+                logger.info("Loaded %d target price(s) from COPART_TARGET_PRICES", len(parsed))
+                return parsed
+            logger.warning("COPART_TARGET_PRICES parsed to empty dict — using defaults")
+        except Exception as exc:
+            logger.warning("Could not parse COPART_TARGET_PRICES: %s — using defaults", exc)
+    return dict(_FALLBACK_TARGET_PRICES)
+
+
+# Loaded once at module import so all functions share the same table
+TARGET_PRICES = _load_target_prices()
+
+
+def get_target_price(year, make, model) -> int:
     year = str(year or "")
     make = (make or "").upper()
     model = (model or "").upper()
-    for (t_year, t_make, t_model), price in TARGET_PRICES.items():
-        if t_year == year and t_make in make and t_model in model:
-            return price
+    # Try exact year match first, then wildcard
+    for key_year in (year, "*"):
+        for (t_year, t_make, t_model), price in TARGET_PRICES.items():
+            if t_year == key_year and t_make in make and t_model in model:
+                return price
     return DEFAULT_MAX_BID
 
 
@@ -79,13 +123,14 @@ def _parse_cookies_dict(cookie_str):
 
 
 def get_bid_details(client, lot_number):
-    """Fetch live bid data from the authenticated dynamic endpoint."""
+    """Fetch live bid data from the authenticated dynamic endpoint.
+    Returns a dict on success, AUTH_FAILED sentinel on 401/403, or None on other error."""
     url = DYNAMIC_URL.format(lot_number=lot_number)
     try:
         resp = client.get(url)
-        if resp.status_code == 401 or resp.status_code == 403:
+        if resp.status_code in (401, 403):
             logger.error("Auth failed for lot %s (HTTP %d) — check COPART_COOKIES secret", lot_number, resp.status_code)
-            return None
+            return AUTH_FAILED
         resp.raise_for_status()
         data = resp.json()
         details = (data.get("data") or {}).get("lotDetails") or {}
@@ -258,8 +303,17 @@ def check_watchlist(watchlist_file, notifier_fn):
         return
     cookies_dict = _parse_cookies_dict(cookie_str) if cookie_str else {}
     now = datetime.now(timezone.utc)
+    stale_days_raw = os.environ.get("COPART_STALE_DAYS", "7").strip()
+    try:
+        stale_days = int(stale_days_raw)
+    except (ValueError, TypeError):
+        logger.warning("Invalid COPART_STALE_DAYS=%r — defaulting to 7", stale_days_raw)
+        stale_days = 7
+    stale_cutoff = now - timedelta(days=stale_days)
+
     to_close = []
     updated = 0
+    auth_alerted = False   # Send cookie-expired alert at most once per run
 
     with httpx.Client(headers=HEADERS, cookies=cookies_dict, timeout=20, follow_redirects=True) as client:
         # Warm up session
@@ -267,9 +321,27 @@ def check_watchlist(watchlist_file, notifier_fn):
 
         for ln, lot in watchlist.items():
             bid = get_bid_details(client, ln)
-            if not bid:
-                logger.warning("Skipping lot %s — could not fetch bid data", ln)
+
+            # ── Auth failure ────────────────────────────────────────────────
+            if bid is AUTH_FAILED:
+                if not auth_alerted:
+                    auth_alerted = True
+                    notifier_fn(None, "cookie_expired")
+                logger.warning("Skipping lot %s — auth failed", ln)
                 continue
+
+            # ── Soft fetch failure ──────────────────────────────────────────
+            if bid is None:
+                fails = lot.get("consecutive_fetch_failures", 0) + 1
+                lot["consecutive_fetch_failures"] = fails
+                logger.warning("Skipping lot %s — could not fetch bid data (failures: %d)", ln, fails)
+                if fails >= 3 and not lot.get("alerted_gone"):
+                    lot["alerted_gone"] = True
+                    notifier_fn(lot, "gone")
+                continue
+
+            # Successful fetch — reset failure counter
+            lot["consecutive_fetch_failures"] = 0
 
             current_bid = bid["current_bid"]
             status = bid["auction_status"]
@@ -341,15 +413,28 @@ def check_watchlist(watchlist_file, notifier_fn):
                 updated += 1
 
             elif bid_changed or status_changed:
-                # Bid changed but over target — log only, no alert
+                # Bid crossed or is above target
                 logger.info("LOT %s OVER TARGET | bid=$%s target=$%s status=%s",
                             ln, current_bid, target, bid_status)
+                # One-time alert when the bid first crosses over the target
+                if (
+                    not lot.get("alerted_over_budget")
+                    and prev_bid is not None
+                    and prev_bid <= target
+                    and current_bid > target
+                ):
+                    lot["alerted_over_budget"] = True
+                    notifier_fn(lot, "over_budget", current_bid=current_bid,
+                                minutes_left=minutes_until_close,
+                                bid_status=bid_status,
+                                prev_bid=prev_bid)
+                    updated += 1
                 lot["last_bid"] = current_bid
                 lot["last_bid_status"] = bid_status
             else:
                 logger.info("LOT %s no change | bid=$%s status=%s", ln, current_bid, bid_status)
 
-    # Archive closed lots
+    # ── Archive closed lots ────────────────────────────────────────────────
     archive_file = Path(watchlist_file).parent / "watchlist_archive.json"
     archive = {}
     if archive_file.exists():
@@ -361,9 +446,34 @@ def check_watchlist(watchlist_file, notifier_fn):
     for ln in to_close:
         archive[ln] = watchlist.pop(ln)
 
-    if to_close:
+    # ── Prune stale lots (active but no close event after stale_days days) ─
+    stale_lots = []
+    for ln, lot in watchlist.items():
+        if ln in to_close:
+            continue
+        added_raw = lot.get("added_at", "")
+        if added_raw:
+            try:
+                added_dt = datetime.fromisoformat(added_raw)
+                if added_dt.tzinfo is None:
+                    added_dt = added_dt.replace(tzinfo=timezone.utc)
+                if added_dt < stale_cutoff:
+                    stale_lots.append(ln)
+            except Exception:
+                pass
+
+    for ln in stale_lots:
+        lot = watchlist[ln]
+        lot["auction_result"] = "PRUNED"
+        lot["closed_at"] = now.isoformat()
+        archive[ln] = watchlist.pop(ln)
+        logger.info("Pruned stale lot %s (added %s)", ln, lot.get("added_at", ""))
+
+    if to_close or stale_lots:
         archive_file.write_text(json.dumps(archive, indent=2))
 
     save_watchlist(watchlist, watchlist_file)
-    logger.info("Watchlist check done: %d active, %d alerts sent, %d closed",
-                len(watchlist), updated, len(to_close))
+    logger.info(
+        "Watchlist check done: %d active, %d alerts sent, %d closed, %d pruned",
+        len(watchlist), updated, len(to_close), len(stale_lots),
+    )

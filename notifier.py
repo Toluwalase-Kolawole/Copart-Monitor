@@ -5,6 +5,7 @@ Drive status (RUNS AND DRIVES / STATIONARY etc.) and keys shown on every alert.
 """
 import logging
 import httpx
+from datetime import datetime, timezone, timedelta
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +21,6 @@ def _format_sale_date(ts_ms) -> str:
     if not ts_ms:
         return "TBD"
     try:
-        from datetime import datetime, timezone
         ts = int(ts_ms)
         if ts > 1_000_000_000_000:
             ts = ts / 1000
@@ -166,7 +166,120 @@ ALERT_EMOJIS = {
     "closing_soon": "🚨",
     "sold": "🔴",
     "update": "🟢",
+    "over_budget": "⚠️",
+    "gone": "🗑",
 }
+
+
+def send_cookie_expired_alert(token: str, chat_id: str):
+    """Send a one-time Telegram alert when COPART_COOKIES auth has expired."""
+    text = (
+        "⚠️ *COPART\\_COOKIES have expired\\!*\n\n"
+        "Bid tracking is paused because Copart rejected the session cookies\\.\n\n"
+        "To resume tracking:\n"
+        "1\\. Log in to copart\\.com in your browser\n"
+        "2\\. Copy the full Cookie header from DevTools → Network\n"
+        "3\\. Update the *COPART\\_COOKIES* secret in your GitHub repository settings"
+    )
+    try:
+        with httpx.Client(timeout=15) as client:
+            resp = client.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id": chat_id, "text": text, "parse_mode": "MarkdownV2"},
+            )
+        if resp.status_code != 200:
+            logger.warning("Cookie-expired alert failed: %d %s", resp.status_code, resp.text[:200])
+        else:
+            logger.info("Sent cookie-expired alert")
+    except Exception as exc:
+        logger.warning("Cookie-expired alert exception: %s", exc)
+
+
+def send_daily_digest(token: str, chat_id: str, watchlist: dict, archive: dict):
+    """
+    Send a daily summary message to Telegram with:
+    - Count of active lots vs. over-budget lots
+    - Lots closing within 24 hours
+    - Archive stats (total closed auctions)
+    """
+    now = datetime.now(timezone.utc)
+    active_lots = list(watchlist.values())
+    total_active = len(active_lots)
+    total_closed = len(archive)
+
+    under_budget = sum(
+        1 for lot in active_lots
+        if lot.get("last_bid") is not None
+        and lot["last_bid"] <= lot.get("target_price", 0)
+    )
+    over_budget = sum(
+        1 for lot in active_lots
+        if lot.get("last_bid") is not None
+        and lot["last_bid"] > lot.get("target_price", 0)
+    )
+    no_bids = total_active - under_budget - over_budget
+
+    # Lots closing within 24 hours
+    closing_soon = []
+    for lot in active_lots:
+        sale_date = lot.get("sale_date")
+        if not sale_date:
+            continue
+        try:
+            ts = int(sale_date)
+            if ts > 1_000_000_000_000:
+                ts /= 1000
+            close_time = datetime.fromtimestamp(ts, tz=timezone.utc)
+            hours_left = (close_time - now).total_seconds() / 3600
+            if 0 < hours_left <= 24:
+                closing_soon.append((lot, hours_left))
+        except Exception:
+            pass
+
+    closing_soon.sort(key=lambda x: x[1])
+
+    date_str = now.strftime("%b %d, %Y")
+
+    lines = [
+        f"📊 *Daily Digest — {_esc(date_str)}*",
+        "",
+        f"🗂 Active lots on watchlist: *{total_active}*",
+        f"  ✅ Under budget: {under_budget}",
+        f"  ⚠️ Over budget: {over_budget}",
+        f"  ➖ No bids yet: {no_bids}",
+        f"  🔴 Closed \\(archive\\): {total_closed}",
+    ]
+
+    if closing_soon:
+        lines += ["", "⏰ *Closing within 24 hours:*"]
+        for lot, hours_left in closing_soon[:10]:
+            title = _esc(lot.get("title", "Unknown"))
+            last_bid = lot.get("last_bid")
+            target = lot.get("target_price", 0)
+            bid_str = f"\\${last_bid:,.0f}" if last_bid is not None else "no bid"
+            target_str = f"\\${target:,}"
+            hours_str = f"{hours_left:.1f}h"
+            url = lot.get("url", "")
+            lines.append(
+                f"  • [{title}]({url}) — {bid_str} vs {target_str} target \\| closes in {_esc(hours_str)}"
+            )
+    else:
+        lines += ["", "✅ No lots closing within 24 hours\\."]
+
+    text = "\n".join(lines)
+
+    try:
+        with httpx.Client(timeout=15) as client:
+            resp = client.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id": chat_id, "text": text, "parse_mode": "MarkdownV2"},
+            )
+        if resp.status_code != 200:
+            logger.warning("Daily digest failed: %d %s", resp.status_code, resp.text[:200])
+        else:
+            logger.info("Daily digest sent (%d active, %d closing soon)", total_active, len(closing_soon))
+    except Exception as exc:
+        logger.warning("Daily digest exception: %s", exc)
 
 
 def send_bid_alert(token: str, chat_id: str, lot: dict, alert_type: str,
@@ -187,6 +300,10 @@ def send_bid_alert(token: str, chat_id: str, lot: dict, alert_type: str,
         status = f"CLOSING IN {int(minutes_left)} MINS"
     elif alert_type == "sold":
         status = "AUCTION CLOSED"
+    elif alert_type == "over_budget":
+        status = "BID EXCEEDED YOUR TARGET"
+    elif alert_type == "gone":
+        status = "LOT MAY HAVE BEEN REMOVED"
     else:
         status = "BID UPDATE"
 
@@ -216,24 +333,34 @@ def send_bid_alert(token: str, chat_id: str, lot: dict, alert_type: str,
         f"{emoji} *{_esc(status)}* \\| {_esc(nlr_tag)}",
         f"🚗 {_esc(title)}",
     ]
-    if position_badge:
-        lines.append(f"*{_esc(position_badge)}*")
-    lines += [
-        bid_line,
-        f"🎯 Your Target: \\${target:,}",
-        budget_str,
-        f"⏱ {_esc(time_str)}",
-        f"🔧 {_esc(damage)} \\| {_esc(odo_str)}",
-    ]
-    if drive:
-        lines.append(f"🚦 {_esc(drive)}")
-    lines.append(f"[View Lot]({url})")
+
+    # Gone alert has a simplified body
+    if alert_type == "gone":
+        lines += [
+            "",
+            "This lot has not responded for 3 consecutive checks\\.",
+            "It may have been pulled from auction or the lot number changed\\.",
+            f"[Check on Copart]({url})",
+        ]
+    else:
+        if position_badge:
+            lines.append(f"*{_esc(position_badge)}*")
+        lines += [
+            bid_line,
+            f"🎯 Your Target: \\${target:,}",
+            budget_str,
+            f"⏱ {_esc(time_str)}",
+            f"🔧 {_esc(damage)} \\| {_esc(odo_str)}",
+        ]
+        if drive:
+            lines.append(f"🚦 {_esc(drive)}")
+        lines.append(f"[View Lot]({url})")
 
     text = "\n".join(lines)
 
     with httpx.Client(timeout=15) as client:
         try:
-            if image_url:
+            if image_url and alert_type != "gone":
                 client.post(
                     f"https://api.telegram.org/bot{token}/sendPhoto",
                     json={"chat_id": chat_id, "photo": image_url, "caption": text, "parse_mode": "MarkdownV2"},

@@ -29611,5 +29611,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "58434876": {
+    "lot_number": "58434876",
+    "title": "2025 TOYOTA RAV4",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 8800.0,
+    "location": "VA - HAMPTON",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/58434876/2025-toyota-rav4-va-hampton",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/621bc175270c4f67a821ee2690ce565a_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-06-30T22:16:06.765945+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

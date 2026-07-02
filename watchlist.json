@@ -29827,5 +29827,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "56450916": {
+    "lot_number": "56450916",
+    "title": "2024 TOYOTA RAV4 XSE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 15292.0,
+    "location": "CA - HAYWARD",
+    "estimate": 42856.0,
+    "url": "https://www.copart.com/lot/56450916/salvage-2024-toyota-rav4-xse-ca-hayward",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/536e85bd568f4a149438ff58c926479b_thb.jpg",
+    "sale_date": 1783450800000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-02T03:46:25.342870+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

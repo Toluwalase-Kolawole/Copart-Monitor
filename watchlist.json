@@ -29881,5 +29881,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "59338586": {
+    "lot_number": "59338586",
+    "title": "2025 TOYOTA RAV4 LIMITED",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LIMITED",
+    "damage": "HAIL",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 3356.0,
+    "location": "CO - DENVER",
+    "estimate": 40939.0,
+    "url": "https://www.copart.com/lot/59338586/2025-toyota-rav4-limited-co-denver",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/0543a9bd2aa140b3af41ae1e56863a67_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-02T16:50:52.879164+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -30313,5 +30313,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "52467946": {
+    "lot_number": "52467946",
+    "title": "2026 TOYOTA RAV4 XSE",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": 566.0,
+    "location": "PA - HARRISBURG",
+    "estimate": 47928.0,
+    "url": "https://www.copart.com/lot/52467946/salvage-2026-toyota-rav4-xse-pa-harrisburg",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0526/335c7484233f45ac893dd62d238ff48f_thb.jpg",
+    "sale_date": 1784037600000,
+    "is_nlr": true,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-07T14:39:02.484221+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

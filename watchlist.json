@@ -30502,5 +30502,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "58901476": {
+    "lot_number": "58901476",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 11329.0,
+    "location": "GA - AUGUSTA",
+    "estimate": 34223.0,
+    "url": "https://www.copart.com/lot/58901476/2025-toyota-rav4-hybrid-xle-ga-augusta",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/ad25b60f4dab432b9d4035d46c7f47c7_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-08T14:13:41.921608+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

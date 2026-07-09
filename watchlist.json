@@ -30826,5 +30826,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "58631376": {
+    "lot_number": "58631376",
+    "title": "2026 TOYOTA RAV4 LE",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 5531.0,
+    "location": "IL - WHEELING",
+    "estimate": 36969.0,
+    "url": "https://www.copart.com/lot/58631376/salvage-2026-toyota-rav4-le-il-wheeling",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/9c481dd7160640a5abaf9d67d03eefb5_thb.jpg",
+    "sale_date": 1785769200000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-09T03:29:31.120462+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

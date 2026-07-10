@@ -31339,5 +31339,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "56709166": {
+    "lot_number": "56709166",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 17267.0,
+    "location": "TX - AUSTIN",
+    "estimate": 29280.0,
+    "url": "https://www.copart.com/lot/56709166/clean-title-2025-toyota-rav4-xle-tx-austin",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0626/174bf3bff1e94553907a095925b04e8c_thb.jpg",
+    "sale_date": 1784044800000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-10T19:35:38.246246+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

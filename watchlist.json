@@ -31366,5 +31366,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "60596116": {
+    "lot_number": "60596116",
+    "title": "2024 TOYOTA RAV4 XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 26470.0,
+    "location": "IL - CHICAGO NORTH",
+    "estimate": 29458.0,
+    "url": "https://www.copart.com/lot/60596116/2024-toyota-rav4-xle-il-chicago-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/9d7cba70147549caa63e60e206231346_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-10T22:05:13.139434+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

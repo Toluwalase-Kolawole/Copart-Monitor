@@ -32014,5 +32014,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "61415976": {
+    "lot_number": "61415976",
+    "title": "2023 TOYOTA RAV4 XLE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "MINOR DENT/SCRATCHES",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 8632.0,
+    "location": "HI - HONOLULU",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/61415976/salvage-2023-toyota-rav4-xle-hi-honolulu",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/b68bdfa3e5944b20af64283b3e85685a_thb.jpg",
+    "sale_date": 1784584800000,
+    "is_nlr": true,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-15T02:35:59.061443+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

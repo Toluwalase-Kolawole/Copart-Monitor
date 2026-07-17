@@ -32743,5 +32743,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "60885986": {
+    "lot_number": "60885986",
+    "title": "2026 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 2559.0,
+    "location": "TX - HOUSTON",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/60885986/2026-toyota-rav4-xle-premium-tx-houston",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/bbe0030dd2d6461185d012be2d131558_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-17T10:48:27.215523+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -32716,5 +32716,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "61595216": {
+    "lot_number": "61595216",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": null,
+    "location": "WA - NORTH SEATTLE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/61595216/2025-toyota-rav4-xle-premium-wa-north-seattle",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/ba183fced0a94f5c9c2a5b5954007289_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-17T02:46:22.192731+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -33121,5 +33121,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "61990406": {
+    "lot_number": "61990406",
+    "title": "2023 TOYOTA RAV4",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "NV - 57 Storage",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/61990406/2023-toyota-rav4-nv-57-storage",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/d27fe08c985a47dd89cf72b789efa145_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-18T10:19:37.285151+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

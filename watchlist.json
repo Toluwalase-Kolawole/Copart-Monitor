@@ -33094,5 +33094,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "61162766": {
+    "lot_number": "61162766",
+    "title": "2024 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "NM - ALBUQUERQUE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/61162766/2024-toyota-rav4-xle-premium-nm-albuquerque",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/cb7271b6d08d4683b113bae0a25483fe_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-18T02:38:05.125748+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

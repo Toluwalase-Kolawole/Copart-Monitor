@@ -33256,5 +33256,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "61897826": {
+    "lot_number": "61897826",
+    "title": "2024 TOYOTA RAV4 XSE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 9302.0,
+    "location": "NV - LAS VEGAS",
+    "estimate": 42475.4,
+    "url": "https://www.copart.com/lot/61897826/2024-toyota-rav4-xse-nv-las-vegas",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/c6ff45f67fa84d999b84310163b8d8fe_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-20T19:45:14.200415+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

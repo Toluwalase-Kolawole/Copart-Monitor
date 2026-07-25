@@ -34309,5 +34309,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "61966256": {
+    "lot_number": "61966256",
+    "title": "2025 TOYOTA RAV4 SE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "SE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 24699.0,
+    "location": "IL - CHICAGO NORTH",
+    "estimate": 39938.66,
+    "url": "https://www.copart.com/lot/61966256/2025-toyota-rav4-se-il-chicago-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/a06e03e241ad4dd68a1373f4daf1a8b4_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-25T16:05:06.110248+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

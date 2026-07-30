@@ -35254,5 +35254,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "59660386": {
+    "lot_number": "59660386",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 15185.0,
+    "location": "CA - SAN JOSE",
+    "estimate": 39002.0,
+    "url": "https://www.copart.com/lot/59660386/salvage-2025-toyota-rav4-hybrid-xle-ca-san-jose",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/b2b301735b1848eab6f31767ea5f97f1_thb.jpg",
+    "sale_date": 1785870000000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-30T16:27:53.425445+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

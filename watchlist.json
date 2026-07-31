@@ -35470,5 +35470,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63696996": {
+    "lot_number": "63696996",
+    "title": "2026 TOYOTA RAV4 LE",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 3012.0,
+    "location": "RI - EXETER",
+    "estimate": 45243.0,
+    "url": "https://www.copart.com/lot/63696996/2026-toyota-rav4-le-ri-exeter",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/625283eab351406d93784e4b9ea8e4e0_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-07-31T19:34:45.427912+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

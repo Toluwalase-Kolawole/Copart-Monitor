@@ -35578,5 +35578,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63151906": {
+    "lot_number": "63151906",
+    "title": "2023 TOYOTA RAV4 XSE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "SIDE",
+    "drive_status": " ",
+    "has_keys": false,
+    "odometer": null,
+    "location": "CA - ADELANTO",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/63151906/2023-toyota-rav4-xse-ca-adelanto",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/8d79512ac2fd4f67aa4585bf51429cbc_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-01T02:56:01.917416+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

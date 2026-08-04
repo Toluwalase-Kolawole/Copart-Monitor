@@ -35902,5 +35902,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63576886": {
+    "lot_number": "63576886",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 14069.0,
+    "location": "NY - BUFFALO",
+    "estimate": 31335.0,
+    "url": "https://www.copart.com/lot/63576886/2025-toyota-rav4-le-ny-buffalo",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/b9c9afff9c334d2cb350b7a36431292f_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-04T14:17:52.792431+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

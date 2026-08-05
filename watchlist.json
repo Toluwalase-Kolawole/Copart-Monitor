@@ -36091,5 +36091,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63174356": {
+    "lot_number": "63174356",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 15722.0,
+    "location": "KY - LEXINGTON WEST",
+    "estimate": 29218.0,
+    "url": "https://www.copart.com/lot/63174356/2025-toyota-rav4-le-ky-lexington-west",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/2f509264fc884d969d5ee4c7814e2f75_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-05T14:11:55.353032+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

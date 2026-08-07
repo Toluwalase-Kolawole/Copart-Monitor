@@ -72,6 +72,7 @@ jobs:
           COPART_YEAR_MIN: ${{ vars.COPART_YEAR_MIN }}
           COPART_YEAR_MAX: ${{ vars.COPART_YEAR_MAX }}
           COPART_MAX_ODOMETER: ${{ vars.COPART_MAX_ODOMETER }}
+          COPART_TARGET_PRICES: ${{ vars.COPART_TARGET_PRICES }}
         run: |
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             python monitor.py --dry-run

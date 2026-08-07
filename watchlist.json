@@ -36739,5 +36739,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63325756": {
+    "lot_number": "63325756",
+    "title": "2025 TOYOTA RAV4 XSE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 2600.0,
+    "location": "MI - DETROIT",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/63325756/2025-toyota-rav4-xse-mi-detroit",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/64edf959a3af4ae0b2e4bcd2a2abf096_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-07T15:57:12.182781+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

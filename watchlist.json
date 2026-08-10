@@ -36901,5 +36901,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63786636": {
+    "lot_number": "63786636",
+    "title": "2026 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 13579.0,
+    "location": "CA - RANCHO CUCAMONGA",
+    "estimate": 38559.0,
+    "url": "https://www.copart.com/lot/63786636/2026-toyota-rav4-xle-premium-ca-rancho-cucamonga",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/14df39a779b04d91876749cc7b746e43_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-10T16:00:17.222894+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

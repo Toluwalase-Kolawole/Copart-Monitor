@@ -37144,5 +37144,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "60944286": {
+    "lot_number": "60944286",
+    "title": "2024 TOYOTA RAV4 XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 8986.0,
+    "location": "ON - TORONTO",
+    "estimate": 40908.44,
+    "url": "https://www.copart.com/lot/60944286/clean-title-2024-toyota-rav4-xle-on-toronto",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0726/7cd2aeb40cc149dc8a4e0381ca7568a3_thb.jpg",
+    "sale_date": 1787662800000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-11T16:01:39.363976+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

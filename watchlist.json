@@ -37306,5 +37306,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "64507306": {
+    "lot_number": "64507306",
+    "title": "2023 TOYOTA RAV4 SE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "SE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": 13238.0,
+    "location": "TX - HOUSTON",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/64507306/2023-toyota-rav4-se-tx-houston",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/bcba4f9084db431c8771dbbc221af9b6_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-12T02:03:48.859552+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

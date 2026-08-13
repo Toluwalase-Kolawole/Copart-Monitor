@@ -37630,5 +37630,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "64768346": {
+    "lot_number": "64768346",
+    "title": "2024 TOYOTA RAV4 HYBRID XLE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": null,
+    "location": "IL - CHICAGO NORTH",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/64768346/2024-toyota-rav4-hybrid-xle-il-chicago-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/e41364d7e11145b79be4bb10b6f676be_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-13T15:59:41.136236+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

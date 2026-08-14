@@ -37846,5 +37846,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63838576": {
+    "lot_number": "63838576",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "HAIL",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 24469.0,
+    "location": "MO - SPRINGFIELD",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/63838576/clean-title-2025-toyota-rav4-xle-mo-springfield",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/55f37c32e84c4cbabca9a852554a6c5e_thb.jpg",
+    "sale_date": 1786982400000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-14T13:09:08.051269+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

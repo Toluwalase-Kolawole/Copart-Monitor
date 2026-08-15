@@ -38035,5 +38035,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "64989506": {
+    "lot_number": "64989506",
+    "title": "2023 TOYOTA RAV4 XLE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": 22114.0,
+    "location": "WI - MILWAUKEE NORTH",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/64989506/2023-toyota-rav4-xle-wi-milwaukee-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/bebee23d027240c6a122cc4dcc8b45b4_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-15T15:21:44.782431+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

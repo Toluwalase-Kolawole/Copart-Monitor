@@ -38062,5 +38062,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "63731976": {
+    "lot_number": "63731976",
+    "title": "2022 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2022,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 7501.0,
+    "location": "VA - HAMPTON",
+    "estimate": 38350.0,
+    "url": "https://www.copart.com/lot/63731976/2022-toyota-rav4-xle-premium-va-hampton",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/d0de5ed0d50343d2868b0091a895448c_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-15T18:31:10.763234+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

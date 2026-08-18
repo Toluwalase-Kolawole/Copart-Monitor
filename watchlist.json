@@ -38332,5 +38332,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "64440676": {
+    "lot_number": "64440676",
+    "title": "2023 TOYOTA RAV4 LE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 19948.0,
+    "location": "NJ - SOMERVILLE",
+    "estimate": 28253.0,
+    "url": "https://www.copart.com/lot/64440676/2023-toyota-rav4-le-nj-somerville",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/9006d2423b0b4bf89a97fc4e5ab0a2c7_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-18T15:33:04.219943+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

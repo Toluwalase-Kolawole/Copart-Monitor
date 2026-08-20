@@ -39277,5 +39277,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "65885666": {
+    "lot_number": "65885666",
+    "title": "2024 TOYOTA RAV4 LIMITED",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LIMITED",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 29261.0,
+    "location": "CO - DENVER CENTRAL",
+    "estimate": 38319.0,
+    "url": "https://www.copart.com/lot/65885666/2024-toyota-rav4-limited-co-denver-central",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/e3247b6be6204a039c1d427c03cb1033_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-20T21:29:11.201631+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

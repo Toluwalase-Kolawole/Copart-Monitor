@@ -39358,5 +39358,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "66192906": {
+    "lot_number": "66192906",
+    "title": "2023 TOYOTA RAV4 LE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 28807.0,
+    "location": "CO - COLORADO SPRINGS",
+    "estimate": 26917.0,
+    "url": "https://www.copart.com/lot/66192906/2023-toyota-rav4-le-co-colorado-springs",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/df99473fc2714f7bbc58964f65b49883_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-21T18:37:49.700296+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -40438,5 +40438,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "66485186": {
+    "lot_number": "66485186",
+    "title": "2024 TOYOTA RAV4 LE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 11998.0,
+    "location": "NH - CANDIA",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/66485186/2024-toyota-rav4-le-nh-candia",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/9fab9efc817b484c8f923817cda63179_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-27T00:31:18.332994+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -40978,5 +40978,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "66580856": {
+    "lot_number": "66580856",
+    "title": "2024 TOYOTA RAV4 LE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "WI - APPLETON",
+    "estimate": 23746.0,
+    "url": "https://www.copart.com/lot/66580856/2024-toyota-rav4-le-wi-appleton",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/f24e89836001409db4e9b38827294e21_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-08-31T12:59:20.695448+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

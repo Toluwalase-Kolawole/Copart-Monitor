@@ -41707,5 +41707,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "66971326": {
+    "lot_number": "66971326",
+    "title": "2023 TOYOTA RAV4 XLE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 27335.0,
+    "location": "GA - ATLANTA EAST",
+    "estimate": 30263.0,
+    "url": "https://www.copart.com/lot/66971326/2023-toyota-rav4-xle-ga-atlanta-east",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/242d10d261c8403b9f9556e00baedf56_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-03T15:58:47.099291+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -41815,5 +41815,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "67536916": {
+    "lot_number": "67536916",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 25865.0,
+    "location": "CA - SAN DIEGO",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/67536916/2025-toyota-rav4-le-ca-san-diego",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/f419822517984d78b4f843fb9aad4f70_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-04T03:25:55.794189+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -42895,5 +42895,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "67828986": {
+    "lot_number": "67828986",
+    "title": "2023 TOYOTA RAV4 PRIME SE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4 PRIME",
+    "trim": "SE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": null,
+    "location": "IN - INDIANAPOLIS",
+    "estimate": 31894.0,
+    "url": "https://www.copart.com/lot/67828986/2023-toyota-rav4-prime-se-in-indianapolis",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/5555db335cf04f3aad29214d4ba833f3_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-11T03:33:44.551076+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

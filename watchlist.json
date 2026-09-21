@@ -44569,5 +44569,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "69774886": {
+    "lot_number": "69774886",
+    "title": "2024 TOYOTA RAV4 LE  ",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "NY - NEWBURGH",
+    "estimate": 28608.0,
+    "url": "https://www.copart.com/lot/69774886/2024-toyota-rav4-le-ny-newburgh",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/b7f59f0c6d9c4e04b52a52cf62c6ff6f_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-21T12:15:17.377156+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

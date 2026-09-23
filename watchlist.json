@@ -45163,5 +45163,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "68500736": {
+    "lot_number": "68500736",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 25722.0,
+    "location": "FL - JACKSONVILLE NORTH",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/68500736/clean-title-2025-toyota-rav4-hybrid-xle-fl-jacksonville-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/88252b557c5b4a779d449d825c8e8d65_thb.jpg",
+    "sale_date": 1790697600000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-23T10:58:52.675455+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

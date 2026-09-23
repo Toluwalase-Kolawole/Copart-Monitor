@@ -45190,5 +45190,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "65116576": {
+    "lot_number": "65116576",
+    "title": "2025 TOYOTA RAV4 XLE  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "VANDALISM",
+    "drive_status": "",
+    "has_keys": true,
+    "odometer": 6457.0,
+    "location": "CA - VAN NUYS",
+    "estimate": 29860.0,
+    "url": "https://www.copart.com/lot/65116576/clean-title-2025-toyota-rav4-xle-ca-van-nuys",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0826/ee0c5b3c663d4b948c1fe432e1f6d40c_thb.jpg",
+    "sale_date": 1790697600000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-23T16:19:33.571217+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

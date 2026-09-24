@@ -45676,5 +45676,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "70536806": {
+    "lot_number": "70536806",
+    "title": "2024 TOYOTA RAV4 SE  ",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "SE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "MA - SOUTH BOSTON",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/70536806/2024-toyota-rav4-se-ma-south-boston",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/9a75712859d44b0a83cdd000bd85e6d8_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-24T21:15:37.525611+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

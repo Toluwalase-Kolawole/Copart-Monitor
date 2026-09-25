@@ -45703,5 +45703,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "70308106": {
+    "lot_number": "70308106",
+    "title": "2022 TOYOTA RAV4 XLE  ",
+    "year": 2022,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": null,
+    "location": "NV - LAS VEGAS",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/70308106/2022-toyota-rav4-xle-nv-las-vegas",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/5431799ed0854906afcad21e3c413e09_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-25T03:56:31.117683+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

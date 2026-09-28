@@ -46000,5 +46000,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "69382536": {
+    "lot_number": "69382536",
+    "title": "2025 TOYOTA RAV4 LE  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 10190.0,
+    "location": "NJ - TRENTON",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/69382536/2025-toyota-rav4-le-nj-trenton",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/ffa85ea30da54fbab0cd8bf576173c14_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-28T13:11:29.304083+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

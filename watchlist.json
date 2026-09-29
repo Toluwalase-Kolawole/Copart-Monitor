@@ -46189,5 +46189,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "70706656": {
+    "lot_number": "70706656",
+    "title": "2025 TOYOTA RAV4 LE  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 23099.0,
+    "location": "UT - SALT LAKE CITY",
+    "estimate": 23132.67,
+    "url": "https://www.copart.com/lot/70706656/2025-toyota-rav4-le-ut-salt-lake-city",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/49ef5fe0bfdd4c60bc395c9de741b28c_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-09-29T04:46:42.031490+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

@@ -47107,5 +47107,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "69507596": {
+    "lot_number": "69507596",
+    "title": "2025 TOYOTA RAV4 LE  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "NORMAL WEAR",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 4930.0,
+    "location": "FL - PUNTA GORDA",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/69507596/clean-title-2025-toyota-rav4-le-fl-punta-gorda",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/a985ad51fb74432480f3c07ea70823e4_thb.jpg",
+    "sale_date": 1791302400000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-10-04T11:55:28.024087+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

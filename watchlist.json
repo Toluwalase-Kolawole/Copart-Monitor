@@ -47134,5 +47134,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "71300136": {
+    "lot_number": "71300136",
+    "title": "2024 TOYOTA RAV4 XSE  ",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 19743.0,
+    "location": "GA - CARTERSVILLE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/71300136/2024-toyota-rav4-xse-ga-cartersville",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1026/1907dae9c73f462798cc038234da3bec_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-10-05T13:54:01.222782+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

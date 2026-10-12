@@ -48457,5 +48457,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "72846866": {
+    "lot_number": "72846866",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": null,
+    "location": "NV - 57 Storage",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/72846866/2025-toyota-rav4-hybrid-xle-nv-57-storage",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1026/9810f55a9535450a82795165ed222b20_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-10-12T10:23:54.816957+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

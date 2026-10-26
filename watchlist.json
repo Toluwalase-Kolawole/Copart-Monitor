@@ -51508,5 +51508,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "73415196": {
+    "lot_number": "73415196",
+    "title": "2026 TOYOTA RAV4 XLE PREMIUM  ",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 15117.0,
+    "location": "FL - MIAMI CENTRAL",
+    "estimate": 39543.0,
+    "url": "https://www.copart.com/lot/73415196/2026-toyota-rav4-xle-premium-fl-miami-central",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1026/43cbbe803ab14889b748b7ece7f1e75b_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-10-26T12:26:41.001746+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

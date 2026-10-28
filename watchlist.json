@@ -52210,5 +52210,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "69536546": {
+    "lot_number": "69536546",
+    "title": "2025 TOYOTA RAV4 XLE  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 9296.0,
+    "location": "CA - NAPA",
+    "estimate": 35643.0,
+    "url": "https://www.copart.com/lot/69536546/salvage-2025-toyota-rav4-xle-ca-napa",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0926/c9f4dd1f0e3246b0bf215b8abaa8cce6_thb.jpg",
+    "sale_date": 1793606400000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-10-28T04:35:07.012593+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

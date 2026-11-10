@@ -54883,5 +54883,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "76569906": {
+    "lot_number": "76569906",
+    "title": "2026 TOYOTA RAV4 LE  ",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 2581.0,
+    "location": "TX - NORTH AUSTIN",
+    "estimate": 36557.0,
+    "url": "https://www.copart.com/lot/76569906/2026-toyota-rav4-le-tx-north-austin",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1126/1559b003f88c4df2be9f8ae525c9ac86_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-10T16:50:36.874281+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

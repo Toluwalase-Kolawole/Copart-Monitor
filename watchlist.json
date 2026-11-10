@@ -54856,5 +54856,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "76694786": {
+    "lot_number": "76694786",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 12334.0,
+    "location": "NC - MOCKSVILLE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/76694786/2025-toyota-rav4-xle-premium-nc-mocksville",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1126/5571f356e1f041709370001ae42836b7_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-10T06:23:35.877031+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

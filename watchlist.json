@@ -55531,5 +55531,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "76631496": {
+    "lot_number": "76631496",
+    "title": "2024 TOYOTA RAV4 PRIME XSE  ",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4 PRIME",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 11453.0,
+    "location": "CA - NAPA",
+    "estimate": 48711.0,
+    "url": "https://www.copart.com/lot/76631496/2024-toyota-rav4-prime-xse-ca-napa",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1126/d449cb22b09c496f9af8f5e81ede6c18_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-12T06:13:07.877041+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

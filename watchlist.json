@@ -55909,5 +55909,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "76859006": {
+    "lot_number": "76859006",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM  ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": 23793.0,
+    "location": "TX - MCALLEN",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/76859006/2025-toyota-rav4-xle-premium-tx-mcallen",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1126/e06e829015d748b4b3dc04feacbfd2aa_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-13T05:34:32.643578+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

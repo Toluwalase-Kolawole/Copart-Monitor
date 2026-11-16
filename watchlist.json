@@ -56206,5 +56206,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "72611196": {
+    "lot_number": "72611196",
+    "title": "2022 TOYOTA RAV4 XLE  ",
+    "year": 2022,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 13646.0,
+    "location": "CN - CANADIAN AFFILIATES",
+    "estimate": 27422.0,
+    "url": "https://www.copart.com/lot/72611196/clean-title-2022-toyota-rav4-xle-cn-canadian-affiliates",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1026/05c1cef68c25469881312a4cc96f44ef_thb.jpg",
+    "sale_date": 1795107600000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-16T10:44:51.368411+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

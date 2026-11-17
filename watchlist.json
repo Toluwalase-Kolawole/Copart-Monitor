@@ -56476,5 +56476,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "77512996": {
+    "lot_number": "77512996",
+    "title": "2024 TOYOTA RAV4 LIMITED  ",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LIMITED",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 11052.0,
+    "location": "TX - SAN ANTONIO",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/77512996/2024-toyota-rav4-limited-tx-san-antonio",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1126/c489075f14ca491d803cc8c6ba2fe4f2_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-17T18:14:57.162009+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

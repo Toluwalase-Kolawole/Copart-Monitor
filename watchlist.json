@@ -57529,5 +57529,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "73634636": {
+    "lot_number": "73634636",
+    "title": "2025 TOYOTA RAV4   ",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 28747.0,
+    "location": "KS - KANSAS CITY",
+    "estimate": 30080.66,
+    "url": "https://www.copart.com/lot/73634636/2025-toyota-rav4-ks-kansas-city",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1026/818315d6f20d4cda9ca65154455aa673_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-22T01:00:07.154514+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

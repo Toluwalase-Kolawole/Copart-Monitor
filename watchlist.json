@@ -57934,5 +57934,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "78481936": {
+    "lot_number": "78481936",
+    "title": "2026 TOYOTA RAV4 SE  ",
+    "year": 2026,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "SE",
+    "damage": "VANDALISM",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 3868.0,
+    "location": "CA - NAPA",
+    "estimate": 42025.0,
+    "url": "https://www.copart.com/lot/78481936/2026-toyota-rav4-se-ca-napa",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1126/9aabfadfca874032b75c79dc0f129e0c_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-24T08:53:44.377846+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }

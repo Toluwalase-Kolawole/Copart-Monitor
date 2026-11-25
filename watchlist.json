@@ -58285,5 +58285,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "78451806": {
+    "lot_number": "78451806",
+    "title": "2024 TOYOTA RAV4 XLE  ",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 16806.0,
+    "location": "CA - SAN DIEGO",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/78451806/2024-toyota-rav4-xle-ca-san-diego",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/1126/6b041d1ebed54d1aa4e9bb6155f523aa_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-11-25T16:54:57.415643+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
